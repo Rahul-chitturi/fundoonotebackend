@@ -20,7 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @org.springframework.stereotype.Service
 @Slf4j
 public class UserServiceImplementation implements UserService {
-
+/**
+ * 
+ */
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -32,6 +34,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Autowired
 	private JwtGenerator tokenGenerator;
+
 
 	@Override
 	public User registration(UserDto user) {
