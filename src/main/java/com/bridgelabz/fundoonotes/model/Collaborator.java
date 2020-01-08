@@ -1,41 +1,33 @@
 package com.bridgelabz.fundoonotes.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
-public class Label {
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Collaborator {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long labelId;
+	private long Id;
 
 	private String name;
-
-
-//	private List<NoteModel> noteList;
-	
 	
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private User userLabel;
-
-//	public List<NoteModel> getNoteList() {
-//		return noteList;
-//	}
-//
-//	public void setNoteList(List<NoteModel> noteList) {
-//		this.noteList = noteList;
-//	}
-
+	private User userNote;
+	
 }

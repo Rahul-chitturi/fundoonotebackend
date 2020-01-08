@@ -121,7 +121,7 @@ loginDetails.setPassword("*******");
 	@PostMapping("/resetpassword/{token}")
 	@CachePut(key = "#token", value = "userId")
 	public ResponseEntity<Response> resetPassword(@PathVariable("token") String token,
-			@RequestBody ResetPassword resetPassword) throws Exception {
+			@RequestBody ResetPassword resetPassword) {
 		User user = userService.resetPassword(token, resetPassword);
 
 		return user != null

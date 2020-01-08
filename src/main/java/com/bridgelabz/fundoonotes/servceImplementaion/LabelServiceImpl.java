@@ -5,6 +5,7 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.LabelDto;
@@ -19,7 +20,7 @@ import com.bridgelabz.fundoonotes.service.LabelService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
 
 @Service
-public abstract class LabelServiceImpl implements LabelService {
+public  class LabelServiceImpl implements LabelService {
 
 	@Autowired
 	private JwtGenerator jwtGenerator;
@@ -34,12 +35,12 @@ public abstract class LabelServiceImpl implements LabelService {
 	@Autowired
 	private NoteRepository noterepository;
 
-	@Autowired
-	private Label label;
+
 
 	@Override
 	public boolean createlabel(LabelDto labelDto, String token) throws Exception {
 		long userId = jwtGenerator.parseJWT(token);
+		Label label = new  Label();
 		Optional<User> isUserAvailable = userRepository.findById(userId);
 		if (isUserAvailable.isPresent()) {
 			String labelName = labelDto.getName();
@@ -60,6 +61,7 @@ public abstract class LabelServiceImpl implements LabelService {
 	@Override
 	public boolean createOrMapWithNote(LabelDto labelDto, long noteId, String token) throws Exception {
 		long userId = jwtGenerator.parseJWT(token);
+		Label label =  new  Label();
 		Optional<User> isUserAvailable = userRepository.findById(userId);
 		if (isUserAvailable.isPresent()) {
 			String labelName = labelDto.getName();
@@ -142,8 +144,8 @@ public abstract class LabelServiceImpl implements LabelService {
 		if (isUserAvailable.isPresent()) {
 			Optional<Label> isLabelAvailable = labelRepository.findById(labelId);
 			if (isLabelAvailable.isPresent()) {
-				List<NoteModel> list = isLabelAvailable.get().getNoteList();
-				return list;
+				//List<NoteModel> list = isLabelAvailable.get().getNoteList();
+				//return list;
 			}
 		}
 		return null;
@@ -157,7 +159,7 @@ public abstract class LabelServiceImpl implements LabelService {
 			Optional<Label> isLabelAvailable = labelRepository.findById(labelId);
 			if (isLabelAvailable.isPresent()) {
 				System.out.println("Note :" + isNoteAvailable.get().getTitle());
-				isLabelAvailable.get().getNoteList().add(isNoteAvailable.get());
+			//	isLabelAvailable.get().getNoteList().add(isNoteAvailable.get());
 				labelRepository.save(isLabelAvailable.get());
 				return true;
 			}

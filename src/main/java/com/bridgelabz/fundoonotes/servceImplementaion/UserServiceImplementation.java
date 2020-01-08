@@ -20,9 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @org.springframework.stereotype.Service
 @Slf4j
 public class UserServiceImplementation implements UserService {
-/**
- * 
- */
+	/**
+	 * 
+	 */
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -35,13 +35,13 @@ public class UserServiceImplementation implements UserService {
 	@Autowired
 	private JwtGenerator tokenGenerator;
 
-
 	@Override
 	public User registration(UserDto user) {
-
+System.out.println("dsd");
 		try {
 			User checkEmailAvailability = userRepository.findByEmailAddress(user.getEmail());
 			if (checkEmailAvailability == null) {
+				System.out.println("dds");
 				User userDetails = new User(user.getFirstName(), user.getLastName(), user.getEmail(),
 						user.getMobilenumber(), user.getPassword());
 				userDetails.setCreatedAt();
@@ -56,7 +56,7 @@ public class UserServiceImplementation implements UserService {
 				userDetailtosendMail.setPassword("*****");
 				return userDetailtosendMail;
 			} else {
-				return null;
+				return checkEmailAvailability;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

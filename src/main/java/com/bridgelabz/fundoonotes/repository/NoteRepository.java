@@ -26,8 +26,9 @@ public interface NoteRepository extends JpaRepository<NoteModel, Long>{
 
 	@Query(value = "select * from note where id = ?", nativeQuery = true)
 	NoteModel checkById(long id);
-
 	
+	@Query(value = "select * from note where id = ? and user_id = ?", nativeQuery = true)
+	NoteModel FindByNotedIdAndUserId(long noteId, long userId);
 	
 	@Modifying
 	@Transactional

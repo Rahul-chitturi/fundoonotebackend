@@ -28,14 +28,17 @@ public class JwtGenerator {
 	 * method to parse the jwt token into integer
 	 * */
 	public long parseJWT(String jwt)
-			throws JWTVerificationException, IllegalArgumentException, UnsupportedEncodingException {
-
+	{
+		try {
 		Long userId = (long) 0;
 		if (jwt != null) {
 			userId = JWT.require(Algorithm.HMAC512(SECRET)).build().verify(jwt).getClaim("id").asLong();
 		}
 		return userId;
+	}catch (Exception e) {
+	e.printStackTrace();
 	}
+		return 0;
 
-
+	}
 }

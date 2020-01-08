@@ -48,14 +48,11 @@ public class NoteServiceImplementation implements NoteService {
 			}
 			return false;
 
-		} catch (JWTVerificationException | IllegalArgumentException | UnsupportedEncodingException e) {
+		} catch (Exception e) {
 
 			e.printStackTrace();
 			return false;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		} 
 
 	}
 

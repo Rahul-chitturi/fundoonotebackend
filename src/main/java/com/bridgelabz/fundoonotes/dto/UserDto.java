@@ -1,31 +1,32 @@
 package com.bridgelabz.fundoonotes.dto;
 
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter
+@Getter
+@Setter
+@ToString
 public class UserDto {
-    
+
 	@NotBlank
 	private String firstName;
-	
+
 	@NotBlank
 	private String lastName;
 
 	@Email
 	@NotNull
 	private String email;
-	
-    @NotNull
+
+	@NotNull
 	private long mobilenumber;
-	
-    @NotNull
+
+	@NotNull
 	private String password;
-	
 
 }
