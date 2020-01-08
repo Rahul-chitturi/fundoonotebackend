@@ -57,7 +57,7 @@ public class UserController {
 			return user != null
 					? ResponseEntity.status(HttpStatus.CREATED)
 							.body(new Response("registration successfull", 200, user))
-					:  ResponseEntity.status(HttpStatus.ALREADY_REPORTED)
+					: ResponseEntity.status(HttpStatus.ALREADY_REPORTED)
 							.body(new Response("user already exist", 400, userDto));
 		}
 	}
@@ -79,7 +79,7 @@ public class UserController {
 					bindingResult.getAllErrors().get(0).getDefaultMessage(), 400, loginDetails));
 		}
 		User userInformation = userService.login(loginDetails);
-		userInformation.setPassword("****");
+loginDetails.setPassword("*******");
 		return userInformation != null
 				? ResponseEntity.status(HttpStatus.OK)
 						.body(new UserAuthenticationResponse(tokenGenerator.jwtToken(userInformation.getId()), 200,
@@ -139,7 +139,6 @@ public class UserController {
 	 */
 	@PostMapping("/forgotpassword")
 	public ResponseEntity<Response> forgotPassword(@RequestParam("email") String email) {
-		// LOGGER.info("Email :"+email);
 
 		User user = userService.forgetPassword(email);
 		if (user != null) {

@@ -3,6 +3,8 @@ package com.bridgelabz.fundoonotes.servceImplementaion;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.bridgelabz.fundoonotes.dto.LoginDetails;
 import com.bridgelabz.fundoonotes.dto.ResetPassword;
@@ -11,7 +13,7 @@ import com.bridgelabz.fundoonotes.model.User;
 import com.bridgelabz.fundoonotes.repository.UserRepository;
 import com.bridgelabz.fundoonotes.service.UserService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
-import com.bridgelabz.fundoonotes.utility.Utility;
+import com.bridgelabz.fundoonotes.utility.SpringEmail;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +21,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserServiceImplementation implements UserService {
 
-	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+	@Autowired
+	private SpringEmail mail;
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -36,14 +43,13 @@ public class UserServiceImplementation implements UserService {
 						user.getMobilenumber(), user.getPassword());
 				userDetails.setCreatedAt();
 				userDetails.setLastLoginTime();
-				userDetails.setPassword(Utility.getEncryPassWord(user.getPassword()));
+				userDetails.setPassword(passwordEncoder.encode(userDetails.getPassword()));
 				userRepository.inserData(userDetails.getCreatedAt(), userDetails.getEmail(), userDetails.getFirstName(),
 						userDetails.getLastName(), userDetails.getMobilenumber(), userDetails.getPassword());
 				User userDetailtosendMail = userRepository.findByEmailAddress(user.getEmail());
 				String response = "http://localhost:8080/users/verify/"
 						+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
-				Utility util = new Utility();
-				util.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
+				mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				userDetailtosendMail.setPassword("*****");
 				return userDetailtosendMail;
 			} else {
@@ -60,13 +66,13 @@ public class UserServiceImplementation implements UserService {
 
 		User userInfo = userRepository.findByEmailAddress(loginDetails.getEmail());
 		if (userInfo != null) {
-			log.info("logining user details" + userInfo.getEmail());
+			log.info("logining user details : " + userInfo.getEmail());
 			if (userInfo.getEmail().equals(loginDetails.getEmail())) {
-				if (userInfo.isIs_email_verified() == true) {
-					boolean is_password_matched = Utility.checkPassword(userInfo.getPassword(),
-							loginDetails.getPassword());
+				if (userInfo.isIs_email_verified()) {
+					boolean is_password_matched = BCrypt.checkpw(loginDetails.getPassword(), userInfo.getPassword());
 					if (is_password_matched) {
 						userRepository.updateLastLoginTime(new Date(), userInfo.getId());
+						userInfo.setPassword("****");
 						return userInfo;
 					} else {
 						return null;
@@ -75,8 +81,8 @@ public class UserServiceImplementation implements UserService {
 					User userDetailtosendMail = userRepository.findByEmailAddress(loginDetails.getEmail());
 					String response = "http://localhost:8080/users/verify/"
 							+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
-					Utility util = new Utility();
-					util.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
+
+					mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				}
 				return null;
 			}
@@ -115,7 +121,7 @@ public class UserServiceImplementation implements UserService {
 				long id = tokenGenerator.parseJWT(token);
 				User isIdAvailable = userRepository.findoneById(id);
 				if (isIdAvailable != null) {
-					isIdAvailable.setPassword(Utility.getEncryPassWord((resetPassword.getPassword())));
+					isIdAvailable.setPassword(passwordEncoder.encode((resetPassword.getPassword())));
 					userRepository.save(isIdAvailable);
 					return isIdAvailable;
 				} else {
@@ -137,33 +143,11 @@ public class UserServiceImplementation implements UserService {
 		if (isIdAvailable != null && isIdAvailable.isIs_email_verified() == true) {
 			String response = "http://localhost:8080/users/updatepassword/"
 					+ tokenGenerator.jwtToken(isIdAvailable.getId());
-			Utility util = new Utility();
-			util.sendVerificationEmail(isIdAvailable.getEmail(), response);
+
+			mail.sendForgetPasswordEmail(isIdAvailable.getEmail(), response);
 			return isIdAvailable;
 		}
 		return null;
 	}
-}
 
-//class MailSender {
-//
-//	
-//	
-//	public static void sendMail(String Email) {
-//		
-//		Runnable runEmailService = new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				
-//				System.out.println(Email);
-//				Utility util = new Utility();
-//				util.sendVerificationEmail(Email);
-//				
-//			}
-//		};
-//		new Thread(runEmailService).start();
-//
-//	}
-//	
-//}
+}
