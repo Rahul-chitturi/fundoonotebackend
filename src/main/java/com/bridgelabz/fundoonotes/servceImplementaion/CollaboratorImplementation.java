@@ -37,7 +37,7 @@ public class CollaboratorImplementation implements CollaboratorService {
 	@Override
 	public Collaborator addCollaborator(CollaboratorDto collaboratorDto, String token, long noteId) {
 
-		long userId = getRedisCecheId(token);
+		Long userId = getRedisCecheId(token);
 
 		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
 		Collaborator toFindAllreadyExists = collaboratorRepository.findOneByEmail(collaboratorDto.getEmail());
@@ -51,7 +51,6 @@ public class CollaboratorImplementation implements CollaboratorService {
 			throw new CustomException("User Not Found or already Exist");
 		}
 
-	
 	}
 
 	private Long getRedisCecheId(String token) {
@@ -64,6 +63,20 @@ public class CollaboratorImplementation implements CollaboratorService {
 		}
 		Long userId = (Long) redis.opsForValue().get(redisTokenKey);
 		return userId;
+	}
+
+	@Override
+	public int deleteCollaborator(Long cId, String token, Long noteId) {
+		int i = 0;
+		Long userId = getRedisCecheId(token);
+		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
+		if (noteModel != null) {
+			i = collaboratorRepository.deleteOneById(cId);
+			
+		}else {
+			return i;
+		}
+		return i;
 	}
 
 }

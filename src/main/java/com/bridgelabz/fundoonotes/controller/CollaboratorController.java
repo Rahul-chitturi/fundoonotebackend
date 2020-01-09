@@ -41,16 +41,10 @@ public class CollaboratorController {
 	}
 	
 	@DeleteMapping("/deletecollaborator/{id}")
-	public ResponseEntity<Response> deleteCollaborator(@Valid  @RequestBody CollaboratorDto collaboratorDto,@PathVariable("id") long noteId ,@RequestHeader("token") String token  , BindingResult bindingResult) {
-		   
-		if(bindingResult.hasErrors()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response(bindingResult.getAllErrors().get(0).getDefaultMessage(), 400));
-		}
-		
-		Collaborator collaborator = collaboratorService.addCollaborator(collaboratorDto , token , noteId);
-		
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(new Response("collaborated successfully", 200, collaborator));
+	public ResponseEntity<Response> deleteCollaborator(@PathVariable(value = "id") Long noteId ,@RequestHeader("token") String token , @RequestHeader("collaboratorId") Long cId ) {
+ int i =    collaboratorService.deleteCollaborator(cId , token , noteId);
+		return  i==1? ResponseEntity.status(HttpStatus.CREATED)
+				.body(new Response("deleted successfully", 200, null)):ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
 	}
 	
 }
