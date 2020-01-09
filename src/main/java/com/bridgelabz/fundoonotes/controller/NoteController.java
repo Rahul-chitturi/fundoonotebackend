@@ -28,8 +28,7 @@ public class NoteController {
 	@Autowired
 	private NoteService noteService;
 	
-	@Autowired
-	private RedisTemplate<String, Object> redis;
+
 
 	/*
 	 * API to create notes
