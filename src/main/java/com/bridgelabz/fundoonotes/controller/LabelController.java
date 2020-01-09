@@ -1,7 +1,5 @@
 package com.bridgelabz.fundoonotes.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotes.dto.LabelDto;
-import com.bridgelabz.fundoonotes.model.Label;
-import com.bridgelabz.fundoonotes.model.NoteModel;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.LabelService;
 
@@ -54,9 +49,6 @@ public class LabelController {
 						.body(new Response("The label you are trying to create is already exist!!!", 400));
 	}
 
-	/*
-	 * API to Remove label from notes
-	 */
 	@DeleteMapping("/remove")
 	public ResponseEntity<Response> removeLabel(@RequestHeader("token") String token,
 			@RequestParam("noteId") long noteId, @RequestParam("labelId") long labelId) {
@@ -65,9 +57,7 @@ public class LabelController {
 				: ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("Something went wrong", 400));
 	}
 
-	/*
-	 * API to delete labels permanently
-	 */
+
 	@DeleteMapping("/delete")
 	public ResponseEntity<Response> deletelabel(@RequestHeader("token") String token,
 			@RequestParam("labelId") long labelId) throws Exception {
@@ -77,9 +67,7 @@ public class LabelController {
 						.body(new Response("The label you are trying to delete is not Available", 400));
 	}
 
-	/*
-	 * API to update the label
-	 */
+
 	@PutMapping("/update")
 	public ResponseEntity<Response> updateLabel(@RequestHeader("token") String token,
 			@RequestParam("labelId") long labelId, @RequestBody LabelDto labelDto) throws Exception {
@@ -89,29 +77,7 @@ public class LabelController {
 						.body(new Response("The label you are trying to update is not available", 400));
 	}
 
-	/*
-	 * API to get All Labels
-	 */
-	@GetMapping("labels")
-	public ResponseEntity<Response> getAllLabels(@RequestHeader("token") String token) throws Exception {
-		List<Label> labelList = labelService.getAllLabels(token);
-		return ResponseEntity.status(HttpStatus.OK).body(new Response("Label List are", 200, labelList));
-	}
 
-	/*
-	 * API to get all notes with same labels
-	 */
-	@GetMapping("/getNotes")
-	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token,
-			@RequestParam("labelId") long labelId) throws Exception {
-		List<NoteModel> noteList = labelService.getAllNotes(token, labelId);
-		return ResponseEntity.status(HttpStatus.OK)
-				.body(new Response("Notes releated to current labelId are", 200, noteList));
-	}
-
-	/*
-	 * API to add labels with notesSS
-	 */
 	@PostMapping("addlabels")
 	public ResponseEntity<Response> addLabelToNotes(@RequestHeader("token") String token,
 			@RequestParam("noteId") long noteId, @RequestParam("labelid") long labelId) {

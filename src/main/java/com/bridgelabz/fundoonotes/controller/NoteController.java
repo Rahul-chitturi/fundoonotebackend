@@ -1,6 +1,7 @@
 package com.bridgelabz.fundoonotes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,18 +19,26 @@ import com.bridgelabz.fundoonotes.dto.ReminderDto;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.NoteService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@RequestMapping("/notes")
 public class NoteController {
 
 	@Autowired
 	private NoteService noteService;
+	
+	@Autowired
+	private RedisTemplate<String, Object> redis;
 
 	/*
 	 * API to create notes
 	 */
-	@PostMapping("notes/create")
+	@PostMapping("/create")
+	@ApiOperation(value = "Api to Create Note for User in fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token)
-			throws Exception {
+		 {
+
 
 		boolean result = noteService.computeSave(noteDto, token);
 		if (result) {
@@ -38,7 +48,8 @@ public class NoteController {
 		}
 	}
 
-	@PutMapping("/notes/color/{id}")
+	@PutMapping("/color/{id}")
+	@ApiOperation(value = "Api to Create Note for User In fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> color(@PathVariable("id") long noteId, @RequestParam String color,
 			@RequestHeader("token") String token) {
 
@@ -51,7 +62,8 @@ public class NoteController {
 
 	}
 
-	@PutMapping("/notes/archive/{id}")
+	@PutMapping("/archive/{id}")
+	@ApiOperation(value = "Api to Archive Note for fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> archive(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 
 		int result = noteService.archive(token, noteId);
@@ -64,9 +76,9 @@ public class NoteController {
 		}
 	}
 
-	@PutMapping("/notes/pinned/{id}")
+	@PutMapping("/pinned/{id}")
+	@ApiOperation(value = "Api to pin and unpin Note for fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> pinned(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
-
 		int result = noteService.pinned(token, noteId);
 		if (result == 1) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully unPinned", 200));
@@ -77,8 +89,9 @@ public class NoteController {
 		}
 	}
 
-	@PutMapping("/notes/delete/{id}")
-	private ResponseEntity<Response> delete(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
+	@PutMapping(value = {"/trash/{id}","/restore/{id}"})
+	@ApiOperation(value = "Api to delete  Note for fundoonotes" , response = Response.class)
+	private ResponseEntity<Response> trash(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 		int result = noteService.delete(token, noteId);
 		if (result == 1) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully restored", 200));
@@ -89,7 +102,8 @@ public class NoteController {
 		}
 	}
 
-	@DeleteMapping("notes/deleteforever/{id}")
+	@DeleteMapping("/deleteforever/{id}")
+	@ApiOperation(value = "Api to deleteNote forever Note for fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> deleteOneNote(@PathVariable("id") long id, @RequestHeader("token") String token)
 			throws Exception {
 
@@ -102,7 +116,8 @@ public class NoteController {
 		
 	}
 	
-	@PostMapping("/notes/updatenote/{id}")
+	@PostMapping("/updatenote/{id}")
+	@ApiOperation(value = "Api to update Note for fundoonotes" , response = Response.class)
 	private ResponseEntity<Response> updateNote(@PathVariable("id") long noteId, @RequestBody NoteDto noteDto, @RequestHeader("token") String token  )
 			throws Exception {
 
@@ -114,7 +129,8 @@ public class NoteController {
 		}
 	}
 	
-@PostMapping("/notes/reminder/{id}")
+@PostMapping("/reminder/{id}")
+@ApiOperation(value = "Api to add Reminder Note for fundoonotes" , response = Response.class)
 private ResponseEntity<Response> reminder(@PathVariable("id") long noteId, @RequestBody ReminderDto reminderDto, @RequestHeader("token") String token  )
 		throws Exception {
 

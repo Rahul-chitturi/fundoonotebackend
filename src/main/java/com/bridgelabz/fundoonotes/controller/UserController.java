@@ -8,7 +8,6 @@ package com.bridgelabz.fundoonotes.controller;
  */
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -28,6 +27,8 @@ import com.bridgelabz.fundoonotes.response.UserAuthenticationResponse;
 import com.bridgelabz.fundoonotes.service.UserService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -46,6 +47,7 @@ public class UserController {
 	 * @return response
 	 */
 	@PostMapping(value = "/register")
+	@ApiOperation(value = "Api to Register User for Fundoonotes", response = Response.class)
 	private ResponseEntity<Response> registration(@Valid @RequestBody UserDto userDto, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
@@ -70,7 +72,7 @@ public class UserController {
 	 * @return response
 	 */
 	@PostMapping(value = "/login")
-	@CachePut(key = "#token", value = "userId")
+	@ApiOperation(value = "Api to Login User for Fundoonotes", response = Response.class)
 	private ResponseEntity<UserAuthenticationResponse> login(@Valid @RequestBody LoginDetails loginDetails,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -79,7 +81,7 @@ public class UserController {
 					bindingResult.getAllErrors().get(0).getDefaultMessage(), 400, loginDetails));
 		}
 		User userInformation = userService.login(loginDetails);
-loginDetails.setPassword("*******");
+		loginDetails.setPassword("*******");
 		return userInformation != null
 				? ResponseEntity.status(HttpStatus.OK)
 						.body(new UserAuthenticationResponse(tokenGenerator.jwtToken(userInformation.getId()), 200,
@@ -95,18 +97,11 @@ loginDetails.setPassword("*******");
 	 * @return response Entity
 	 */
 	@PutMapping("/verify/{token}")
-	@CachePut(key = "#token", value = "userId")
+	@ApiOperation(value = "Api to Verify User for Fundoonotes", response = Response.class)
 	private ResponseEntity<Response> userVerification(@PathVariable("token") String token) {
-		try {
-			User user = userService.verify(token);
-			return user != null ? ResponseEntity.status(HttpStatus.OK).body(new Response("verified", 200))
-					: ResponseEntity.status(HttpStatus.OK).body(new Response("not verified", 400));
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-
+		User user = userService.verify(token);
+		return user != null ? ResponseEntity.status(HttpStatus.OK).body(new Response("verified", 200))
+				: ResponseEntity.status(HttpStatus.OK).body(new Response("not verified", 400));
 	}
 
 	/**
@@ -119,7 +114,7 @@ loginDetails.setPassword("*******");
 	 */
 
 	@PostMapping("/resetpassword/{token}")
-	@CachePut(key = "#token", value = "userId")
+	@ApiOperation(value = "Api to ResetPassword User for Fundoonotes" , response = Response.class)
 	public ResponseEntity<Response> resetPassword(@PathVariable("token") String token,
 			@RequestBody ResetPassword resetPassword) {
 		User user = userService.resetPassword(token, resetPassword);
@@ -138,6 +133,7 @@ loginDetails.setPassword("*******");
 	 * @return response
 	 */
 	@PostMapping("/forgotpassword")
+	@ApiOperation(value = "Api to FoegetPassword User for Fundoonotes" , response = Response.class)
 	public ResponseEntity<Response> forgotPassword(@RequestParam("email") String email) {
 
 		User user = userService.forgetPassword(email);
