@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.bridgelabz.fundoonotes.response.Response;
 
 @RestControllerAdvice
-public class RestExceptionHandler
+public class GlobalException
 {
     @ExceptionHandler(value = { IOException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -23,6 +23,6 @@ public class RestExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Response unKnownException(Exception ex)
     {
-        return new Response( "Employee Not Found" , 400);
+        return new Response( ex.getMessage() , 400);
     }
 }

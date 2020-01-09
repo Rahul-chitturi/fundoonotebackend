@@ -1,10 +1,10 @@
 package com.bridgelabz.fundoonotes.exception;
 
-public class UserNotFoundException extends RuntimeException {
+public class CustomException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public UserNotFoundException(String message) {
+	public CustomException(String message) {
 		super(message);
 	}
 

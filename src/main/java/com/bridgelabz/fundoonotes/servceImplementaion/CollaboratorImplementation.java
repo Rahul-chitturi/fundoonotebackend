@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.CollaboratorDto;
-import com.bridgelabz.fundoonotes.exception.UserNotFoundException;
+import com.bridgelabz.fundoonotes.exception.CustomException;
 import com.bridgelabz.fundoonotes.model.Collaborator;
 import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.repository.CollaboratorRepository;
@@ -30,7 +30,7 @@ public class CollaboratorImplementation implements CollaboratorService {
 
 	@Autowired
 	private CollaboratorRepository collaboratorRepository;
-	
+
 	@Autowired
 	private RedisTemplate<String, Object> redis;
 
@@ -40,17 +40,18 @@ public class CollaboratorImplementation implements CollaboratorService {
 		long userId = getRedisCecheId(token);
 
 		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
-
-		if (noteModel != null) {
+		Collaborator toFindAllreadyExists = collaboratorRepository.findOneByEmail(collaboratorDto.getEmail());
+		if (noteModel != null && toFindAllreadyExists == null) {
 			Collaborator collaborator = new Collaborator();
 			BeanUtils.copyProperties(collaboratorDto, collaborator);
 			collaborator.setNote(noteModel);
 			collaboratorRepository.save(collaborator);
+			return collaborator;
 		} else {
-			throw new UserNotFoundException("User Note Found");
+			throw new CustomException("User Not Found or already Exist");
 		}
 
-		return null;
+	
 	}
 
 	private Long getRedisCecheId(String token) {

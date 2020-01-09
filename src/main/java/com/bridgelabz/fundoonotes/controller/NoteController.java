@@ -1,7 +1,6 @@
 package com.bridgelabz.fundoonotes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,17 +26,13 @@ public class NoteController {
 
 	@Autowired
 	private NoteService noteService;
-	
-
 
 	/*
 	 * API to create notes
 	 */
 	@PostMapping("/create")
-	@ApiOperation(value = "Api to Create Note for User in fundoonotes" , response = Response.class)
-	private ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token)
-		 {
-
+	@ApiOperation(value = "Api to Create Note for User in fundoonotes", response = Response.class)
+	private ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token) {
 
 		boolean result = noteService.computeSave(noteDto, token);
 		if (result) {
@@ -48,7 +43,7 @@ public class NoteController {
 	}
 
 	@PutMapping("/color/{id}")
-	@ApiOperation(value = "Api to Create Note for User In fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to Create Note for User In fundoonotes", response = Response.class)
 	private ResponseEntity<Response> color(@PathVariable("id") long noteId, @RequestParam String color,
 			@RequestHeader("token") String token) {
 
@@ -62,7 +57,7 @@ public class NoteController {
 	}
 
 	@PutMapping("/archive/{id}")
-	@ApiOperation(value = "Api to Archive Note for fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to Archive Note for fundoonotes", response = Response.class)
 	private ResponseEntity<Response> archive(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 
 		int result = noteService.archive(token, noteId);
@@ -76,7 +71,7 @@ public class NoteController {
 	}
 
 	@PutMapping("/pinned/{id}")
-	@ApiOperation(value = "Api to pin and unpin Note for fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to pin and unpin Note for fundoonotes", response = Response.class)
 	private ResponseEntity<Response> pinned(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 		int result = noteService.pinned(token, noteId);
 		if (result == 1) {
@@ -88,8 +83,8 @@ public class NoteController {
 		}
 	}
 
-	@PutMapping(value = {"/trash/{id}","/restore/{id}"})
-	@ApiOperation(value = "Api to delete  Note for fundoonotes" , response = Response.class)
+	@PutMapping(value = { "/trash/{id}", "/restore/{id}" })
+	@ApiOperation(value = "Api to delete  Note for fundoonotes", response = Response.class)
 	private ResponseEntity<Response> trash(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 		int result = noteService.delete(token, noteId);
 		if (result == 1) {
@@ -102,42 +97,43 @@ public class NoteController {
 	}
 
 	@DeleteMapping("/deleteforever/{id}")
-	@ApiOperation(value = "Api to deleteNote forever Note for fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to deleteNote forever Note for fundoonotes", response = Response.class)
 	private ResponseEntity<Response> deleteOneNote(@PathVariable("id") long id, @RequestHeader("token") String token)
 			throws Exception {
 
 		boolean result = noteService.deleteOneNote(id, token);
-		if(result) {
+		if (result) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully deleted", 200));
-		}else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong can't delete", 400));
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body(new Response("Something went wrong can't delete", 400));
 		}
-		
-	}
-	
-	@PostMapping("/updatenote/{id}")
-	@ApiOperation(value = "Api to update Note for fundoonotes" , response = Response.class)
-	private ResponseEntity<Response> updateNote(@PathVariable("id") long noteId, @RequestBody NoteDto noteDto, @RequestHeader("token") String token  )
-			throws Exception {
 
-		boolean result = noteService.updateNote(noteDto, token ,noteId);
+	}
+
+	@PostMapping("/updatenote/{id}")
+	@ApiOperation(value = "Api to update Note for fundoonotes", response = Response.class)
+	private ResponseEntity<Response> updateNote(@PathVariable("id") long noteId, @RequestBody NoteDto noteDto,
+			@RequestHeader("token") String token) throws Exception {
+
+		boolean result = noteService.updateNote(noteDto, token, noteId);
 		if (result) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("Note is update successfully", 200));
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
 		}
 	}
-	
-@PostMapping("/reminder/{id}")
-@ApiOperation(value = "Api to add Reminder Note for fundoonotes" , response = Response.class)
-private ResponseEntity<Response> reminder(@PathVariable("id") long noteId, @RequestBody ReminderDto reminderDto, @RequestHeader("token") String token  )
-		throws Exception {
 
-	boolean result = noteService.reminder(reminderDto, token ,noteId);
-	if (result) {
-		return ResponseEntity.status(HttpStatus.OK).body(new Response("reminder is update successfully", 200));
-	} else {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+	@PostMapping("/reminder/{id}")
+	@ApiOperation(value = "Api to add Reminder Note for fundoonotes", response = Response.class)
+	private ResponseEntity<Response> reminder(@PathVariable("id") long noteId, @RequestBody ReminderDto reminderDto,
+			@RequestHeader("token") String token) throws Exception {
+
+		boolean result = noteService.reminder(reminderDto, token, noteId);
+		if (result) {
+			return ResponseEntity.status(HttpStatus.OK).body(new Response("reminder is update successfully", 200));
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+		}
 	}
-}
 }
