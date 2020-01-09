@@ -1,0 +1,477 @@
+"2020-01-09 10:28:22 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:28:22 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:28:23 - The Class-Path manifest attribute in /home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+""2020-01-09 10:28:23 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2020-01-09 10:28:23 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2020-01-09 10:28:25 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:28:25 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:28:25 - Finished Spring Data repository scanning in 115ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:28:26 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:28:26 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:28:26 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:28:26 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:28:26 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:28:26 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:28:26 - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:28:26 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:28:27 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:28:27 - Starting service [Tomcat]
+""2020-01-09 10:28:27 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:28:27 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:28:27 - Root WebApplicationContext: initialization completed in 4475 ms
+""2020-01-09 10:28:28 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:28:28 - HHH000412: Hibernate Core {5.4.9.Final}
+""2020-01-09 10:28:28 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+""2020-01-09 10:28:28 - HikariPool-1 - Starting...
+""2020-01-09 10:28:28 - HikariPool-1 - Start completed.
+""2020-01-09 10:28:28 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:28:30 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:28:30 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:28:30 - LiveReload server is running on port 35729
+""2020-01-09 10:28:32 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:28:32 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:28:33 - Context refreshed
+""2020-01-09 10:28:33 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:28:33 - Scanning for api listing references
+""2020-01-09 10:28:33 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:28:33 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:28:33 - Started FundoonotesApplication in 12.428 seconds (JVM running for 14.506)
+""2020-01-09 10:28:41 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2020-01-09 10:28:41 - Initializing Servlet 'dispatcherServlet'
+""2020-01-09 10:28:41 - Completed initialization in 20 ms
+""2020-01-09 10:29:58 - Before method:User com.bridgelabz.fundoonotes.servceImplementaion.UserServiceImplementation.registration(UserDto)
+""2020-01-09 10:29:58 - Creating User registration name: rahul Chitturi
+""2020-01-09 10:29:59 - sending verification Email
+""2020-01-09 10:30:05 - message sent
+""2020-01-09 10:30:05 - After method:User com.bridgelabz.fundoonotes.servceImplementaion.UserServiceImplementation.registration(UserDto)
+""2020-01-09 10:30:05 - Successfully response returned 
+""2020-01-09 10:31:18 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:31:18 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:31:18 - HikariPool-1 - Shutdown initiated...
+""2020-01-09 10:31:18 - HikariPool-1 - Shutdown completed.
+""2020-01-09 10:31:18 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:31:18 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:31:19 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:31:19 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:31:19 - Finished Spring Data repository scanning in 26ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:31:19 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:31:19 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:31:19 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:31:19 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:31:19 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:31:19 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:31:19 - Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:31:19 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:31:19 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:31:19 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:31:19 - Starting service [Tomcat]
+""2020-01-09 10:31:19 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:31:19 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:31:19 - Root WebApplicationContext: initialization completed in 769 ms
+""2020-01-09 10:31:19 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:31:19 - HikariPool-2 - Starting...
+""2020-01-09 10:31:19 - HikariPool-2 - Start completed.
+""2020-01-09 10:31:19 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:31:20 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:31:20 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:31:20 - LiveReload server is running on port 35729
+""2020-01-09 10:31:20 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:31:21 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:31:21 - Context refreshed
+""2020-01-09 10:31:21 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:31:21 - Scanning for api listing references
+""2020-01-09 10:31:21 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:31:21 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:31:21 - Started FundoonotesApplication in 2.665 seconds (JVM running for 182.259)
+""2020-01-09 10:31:21 - Condition evaluation unchanged
+""2020-01-09 10:49:31 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:49:31 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:49:31 - HikariPool-2 - Shutdown initiated...
+""2020-01-09 10:49:31 - HikariPool-2 - Shutdown completed.
+""2020-01-09 10:49:31 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:49:31 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:49:32 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:49:32 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:49:32 - Finished Spring Data repository scanning in 38ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:49:32 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:49:32 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:49:32 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:49:32 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:49:32 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:49:32 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:49:32 - Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:49:32 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:49:32 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:49:32 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:49:32 - Starting service [Tomcat]
+""2020-01-09 10:49:32 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:49:32 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:49:32 - Root WebApplicationContext: initialization completed in 1319 ms
+""2020-01-09 10:49:33 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:49:33 - HikariPool-3 - Starting...
+""2020-01-09 10:49:33 - HikariPool-3 - Start completed.
+""2020-01-09 10:49:33 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:49:33 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:49:33 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:49:33 - LiveReload server is running on port 35729
+""2020-01-09 10:49:33 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:49:34 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:49:34 - Context refreshed
+""2020-01-09 10:49:34 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:49:34 - Scanning for api listing references
+""2020-01-09 10:49:34 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:49:34 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:49:34 - Started FundoonotesApplication in 2.887 seconds (JVM running for 1275.203)
+""2020-01-09 10:49:34 - Condition evaluation unchanged
+""2020-01-09 10:50:12 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:12 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:12 - HikariPool-3 - Shutdown initiated...
+""2020-01-09 10:50:12 - HikariPool-3 - Shutdown completed.
+""2020-01-09 10:50:13 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:13 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:13 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:13 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:13 - Finished Spring Data repository scanning in 32ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:13 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:13 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:13 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:13 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:13 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:13 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:13 - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:13 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:14 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:14 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:14 - Starting service [Tomcat]
+""2020-01-09 10:50:14 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:14 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:14 - Root WebApplicationContext: initialization completed in 1025 ms
+""2020-01-09 10:50:14 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:14 - HikariPool-4 - Starting...
+""2020-01-09 10:50:14 - HikariPool-4 - Start completed.
+""2020-01-09 10:50:14 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:14 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:14 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:14 - LiveReload server is running on port 35729
+""2020-01-09 10:50:15 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:15 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:15 - Context refreshed
+""2020-01-09 10:50:16 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:16 - Scanning for api listing references
+""2020-01-09 10:50:16 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:16 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:16 - Started FundoonotesApplication in 3.32 seconds (JVM running for 1317.119)
+""2020-01-09 10:50:16 - Condition evaluation unchanged
+""2020-01-09 10:50:17 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:17 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:17 - HikariPool-4 - Shutdown initiated...
+""2020-01-09 10:50:17 - HikariPool-4 - Shutdown completed.
+""2020-01-09 10:50:17 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:17 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:18 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:18 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:18 - Finished Spring Data repository scanning in 28ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:18 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:18 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:18 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:18 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:18 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:18 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:18 - Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:18 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:18 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:18 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:18 - Starting service [Tomcat]
+""2020-01-09 10:50:18 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:18 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:18 - Root WebApplicationContext: initialization completed in 861 ms
+""2020-01-09 10:50:18 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:18 - HikariPool-5 - Starting...
+""2020-01-09 10:50:18 - HikariPool-5 - Start completed.
+""2020-01-09 10:50:18 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:18 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:18 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:18 - LiveReload server is running on port 35729
+""2020-01-09 10:50:19 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:19 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:20 - Context refreshed
+""2020-01-09 10:50:20 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:20 - Scanning for api listing references
+""2020-01-09 10:50:20 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:20 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:20 - Started FundoonotesApplication in 2.681 seconds (JVM running for 1320.98)
+""2020-01-09 10:50:20 - Condition evaluation unchanged
+""2020-01-09 10:50:22 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:22 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:22 - HikariPool-5 - Shutdown initiated...
+""2020-01-09 10:50:22 - HikariPool-5 - Shutdown completed.
+""2020-01-09 10:50:22 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:22 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:23 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:23 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:23 - Finished Spring Data repository scanning in 32ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:23 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:23 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:23 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:23 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:23 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:23 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:23 - Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:23 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:23 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:23 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:23 - Starting service [Tomcat]
+""2020-01-09 10:50:23 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:23 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:23 - Root WebApplicationContext: initialization completed in 1081 ms
+""2020-01-09 10:50:24 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:24 - HikariPool-6 - Starting...
+""2020-01-09 10:50:24 - HikariPool-6 - Start completed.
+""2020-01-09 10:50:24 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:24 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:24 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:24 - LiveReload server is running on port 35729
+""2020-01-09 10:50:25 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:25 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:25 - Context refreshed
+""2020-01-09 10:50:25 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:25 - Scanning for api listing references
+""2020-01-09 10:50:25 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:25 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:25 - Started FundoonotesApplication in 2.954 seconds (JVM running for 1326.384)
+""2020-01-09 10:50:25 - Condition evaluation unchanged
+""2020-01-09 10:50:34 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:34 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:34 - HikariPool-6 - Shutdown initiated...
+""2020-01-09 10:50:34 - HikariPool-6 - Shutdown completed.
+""2020-01-09 10:50:35 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:35 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:35 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:35 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:36 - Finished Spring Data repository scanning in 41ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:36 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:36 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:36 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:36 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:36 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:36 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:36 - Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:36 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:36 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:36 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:36 - Starting service [Tomcat]
+""2020-01-09 10:50:36 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:36 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:36 - Root WebApplicationContext: initialization completed in 1231 ms
+""2020-01-09 10:50:36 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:36 - HikariPool-7 - Starting...
+""2020-01-09 10:50:36 - HikariPool-7 - Start completed.
+""2020-01-09 10:50:36 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:36 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:36 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:36 - LiveReload server is running on port 35729
+""2020-01-09 10:50:37 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:37 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:38 - Context refreshed
+""2020-01-09 10:50:38 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:38 - Scanning for api listing references
+""2020-01-09 10:50:38 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:38 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:38 - Started FundoonotesApplication in 2.912 seconds (JVM running for 1338.852)
+""2020-01-09 10:50:38 - Condition evaluation unchanged
+""2020-01-09 10:50:41 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:41 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:41 - HikariPool-7 - Shutdown initiated...
+""2020-01-09 10:50:41 - HikariPool-7 - Shutdown completed.
+""2020-01-09 10:50:41 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:41 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:42 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:42 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:42 - Finished Spring Data repository scanning in 39ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:42 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:42 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:42 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:42 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:42 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:42 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:42 - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:42 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:42 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:42 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:42 - Starting service [Tomcat]
+""2020-01-09 10:50:42 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:42 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:42 - Root WebApplicationContext: initialization completed in 1043 ms
+""2020-01-09 10:50:43 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:43 - HikariPool-8 - Starting...
+""2020-01-09 10:50:43 - HikariPool-8 - Start completed.
+""2020-01-09 10:50:43 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:43 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:43 - LiveReload server is running on port 35729
+""2020-01-09 10:50:43 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:44 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:44 - Context refreshed
+""2020-01-09 10:50:44 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:44 - Scanning for api listing references
+""2020-01-09 10:50:44 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:44 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:44 - Started FundoonotesApplication in 2.604 seconds (JVM running for 1345.176)
+""2020-01-09 10:50:44 - Condition evaluation unchanged
+""2020-01-09 10:50:47 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:47 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:47 - HikariPool-8 - Shutdown initiated...
+""2020-01-09 10:50:47 - HikariPool-8 - Shutdown completed.
+""2020-01-09 10:50:48 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:50:48 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:50:48 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:48 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:50:48 - Finished Spring Data repository scanning in 31ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:50:48 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:50:48 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:50:48 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:48 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:48 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:48 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:50:48 - Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:50:48 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:50:49 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:50:49 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:50:49 - Starting service [Tomcat]
+""2020-01-09 10:50:49 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:50:49 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:50:49 - Root WebApplicationContext: initialization completed in 1086 ms
+""2020-01-09 10:50:49 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:50:49 - HikariPool-9 - Starting...
+""2020-01-09 10:50:49 - HikariPool-9 - Start completed.
+""2020-01-09 10:50:49 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:50:49 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:50:49 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:50:49 - LiveReload server is running on port 35729
+""2020-01-09 10:50:50 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:50:50 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:50:50 - Context refreshed
+""2020-01-09 10:50:50 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:50:50 - Scanning for api listing references
+""2020-01-09 10:50:50 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:50:50 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:50:50 - Started FundoonotesApplication in 2.801 seconds (JVM running for 1351.504)
+""2020-01-09 10:50:50 - Condition evaluation unchanged
+""2020-01-09 10:51:07 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:07 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:07 - HikariPool-9 - Shutdown initiated...
+""2020-01-09 10:51:07 - HikariPool-9 - Shutdown completed.
+""2020-01-09 10:51:07 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:51:07 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:51:08 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:08 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:51:08 - Finished Spring Data repository scanning in 34ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:51:08 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:08 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:51:08 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:08 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:08 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:08 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:08 - Finished Spring Data repository scanning in 19ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:51:08 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:51:08 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:51:08 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:51:08 - Starting service [Tomcat]
+""2020-01-09 10:51:08 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:51:08 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:51:08 - Root WebApplicationContext: initialization completed in 903 ms
+""2020-01-09 10:51:08 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:51:08 - HikariPool-10 - Starting...
+""2020-01-09 10:51:08 - HikariPool-10 - Start completed.
+""2020-01-09 10:51:08 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:51:09 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:51:09 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:09 - LiveReload server is running on port 35729
+""2020-01-09 10:51:10 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:51:10 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:10 - Context refreshed
+""2020-01-09 10:51:10 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:51:10 - Scanning for api listing references
+""2020-01-09 10:51:10 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:51:10 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:51:10 - Started FundoonotesApplication in 3.08 seconds (JVM running for 1371.562)
+""2020-01-09 10:51:10 - Condition evaluation unchanged
+""2020-01-09 10:51:15 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:15 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:15 - HikariPool-10 - Shutdown initiated...
+""2020-01-09 10:51:15 - HikariPool-10 - Shutdown completed.
+""2020-01-09 10:51:15 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:51:15 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:51:15 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:15 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:51:15 - Finished Spring Data repository scanning in 26ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:51:15 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:15 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:51:15 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:15 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:15 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:15 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:15 - Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:51:15 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:51:16 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:51:16 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:51:16 - Starting service [Tomcat]
+""2020-01-09 10:51:16 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:51:16 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:51:16 - Root WebApplicationContext: initialization completed in 1056 ms
+""2020-01-09 10:51:16 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:51:16 - HikariPool-11 - Starting...
+""2020-01-09 10:51:16 - HikariPool-11 - Start completed.
+""2020-01-09 10:51:16 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:51:16 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:51:16 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:16 - LiveReload server is running on port 35729
+""2020-01-09 10:51:17 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:51:17 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:18 - Context refreshed
+""2020-01-09 10:51:18 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:51:18 - Scanning for api listing references
+""2020-01-09 10:51:18 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:51:18 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:51:18 - Started FundoonotesApplication in 3.001 seconds (JVM running for 1378.899)
+""2020-01-09 10:51:18 - Condition evaluation unchanged
+""2020-01-09 10:51:21 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:21 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:21 - HikariPool-11 - Shutdown initiated...
+""2020-01-09 10:51:21 - HikariPool-11 - Shutdown completed.
+""2020-01-09 10:51:22 - Starting FundoonotesApplication on unisco with PID 6649 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-09 10:51:22 - No active profile set, falling back to default profiles: default
+""2020-01-09 10:51:22 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:22 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-09 10:51:22 - Finished Spring Data repository scanning in 28ms. Found 4 JPA repository interfaces.
+""2020-01-09 10:51:22 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-09 10:51:22 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-09 10:51:22 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:22 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:22 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:22 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-09 10:51:22 - Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+""2020-01-09 10:51:22 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-09 10:51:22 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-09 10:51:22 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-09 10:51:22 - Starting service [Tomcat]
+""2020-01-09 10:51:22 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-09 10:51:22 - Initializing Spring embedded WebApplicationContext
+""2020-01-09 10:51:22 - Root WebApplicationContext: initialization completed in 936 ms
+""2020-01-09 10:51:23 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-09 10:51:23 - HikariPool-12 - Starting...
+""2020-01-09 10:51:23 - HikariPool-12 - Start completed.
+""2020-01-09 10:51:23 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-09 10:51:23 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-09 10:51:23 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-09 10:51:23 - LiveReload server is running on port 35729
+""2020-01-09 10:51:23 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-09 10:51:24 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-09 10:51:24 - Context refreshed
+""2020-01-09 10:51:24 - Found 1 custom documentation plugin(s)
+""2020-01-09 10:51:24 - Scanning for api listing references
+""2020-01-09 10:51:24 - Generating unique operation named: trashUsingPUT_1
+""2020-01-09 10:51:24 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-09 10:51:24 - Started FundoonotesApplication in 2.568 seconds (JVM running for 1385.255)
+""2020-01-09 10:51:24 - Condition evaluation unchanged
+"
