@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
-import com.bridgelabz.fundoonotes.model.NoteModel;
+import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.model.User;
 import com.bridgelabz.fundoonotes.repository.NoteRepository;
 import com.bridgelabz.fundoonotes.repository.UserRepository;
@@ -44,7 +44,7 @@ public class NoteServiceImplementation implements NoteService {
 			log.info("Id is :" + userId + " ,Description :" + noteDto.getNoteContant());
 			User user = userRepository.findoneById(userId);
 			if (user != null) {
-				NoteModel note = new NoteModel(noteDto.getNoteTitle(), noteDto.getNoteContant());
+				Note note = new Note(noteDto.getNoteTitle(), noteDto.getNoteContant());
 				note.setUserNote(user);
 				note.setCreatedAt();
 				noteRepository.insertData(note.getContant(), note.getCreatedAt(), note.getTitle(), note.getUpdatedAt(),
@@ -80,7 +80,7 @@ public class NoteServiceImplementation implements NoteService {
 
 		try {
 			Long userId = getRedisCecheId(token);
-			NoteModel note = noteRepository.checkById(noteId);
+			Note note = noteRepository.checkById(noteId);
 			LOGGER.info("name : " + note.getId());
 			if (note.isArchived()) {
 				noteRepository.setArchive(false, userId, noteId);
@@ -104,7 +104,7 @@ public class NoteServiceImplementation implements NoteService {
 		try {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + "note ID is: " + noteId);
-			NoteModel note = noteRepository.checkById(noteId);
+			Note note = noteRepository.checkById(noteId);
 			if (note.isPinned()) {
 				noteRepository.setPinned(false, userId, noteId);
 				return 1;
@@ -127,7 +127,7 @@ public class NoteServiceImplementation implements NoteService {
 		try {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + "note ID is: " + noteId);
-			NoteModel note = noteRepository.checkById(noteId);
+			Note note = noteRepository.checkById(noteId);
 			if (note.isDeleted()) {
 				noteRepository.deleteForever(userId, noteId);
 				return true;
@@ -144,7 +144,7 @@ public class NoteServiceImplementation implements NoteService {
 		try {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + "note ID is: " + noteId);
-			NoteModel note = noteRepository.checkById(noteId);
+			Note note = noteRepository.checkById(noteId);
 			if (note.isDeleted()) {
 				noteRepository.setPinned(false, userId, noteId);
 				noteRepository.setDelete(false, userId, noteId);
@@ -170,7 +170,7 @@ public class NoteServiceImplementation implements NoteService {
 			log.info("Id is :" + id + "note ID is: " + noteId);
 			User user = userRepository.findoneById(id);
 			if (user != null) {
-				NoteModel note = noteRepository.checkById(noteId);
+				Note note = noteRepository.checkById(noteId);
 				note.setContant(noteDto.getNoteContant());
 				note.setTitle(noteDto.getNoteTitle());
 				note.setUpdatedAt();
@@ -194,7 +194,7 @@ public class NoteServiceImplementation implements NoteService {
 			log.info("Id is :" + id + "note ID is: " + noteId);
 			User user = userRepository.findoneById(id);
 			if (user != null) {
-				NoteModel note = noteRepository.checkById(noteId);
+				Note note = noteRepository.checkById(noteId);
 				note.setLocalReminderStatus(reminderDto.getLocalReminderStatus());
 				note.setLocalReminder(reminderDto.getLocalReminder());
 				System.out.println(note.getLocalReminder());

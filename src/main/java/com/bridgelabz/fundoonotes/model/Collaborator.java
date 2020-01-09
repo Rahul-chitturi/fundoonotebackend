@@ -7,9 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.sun.istack.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Entity
@@ -24,10 +27,12 @@ public class Collaborator {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
 
-	private String name;
+	@NonNull
+	private String email;
 	
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "userId")
-	private User userNote;
+	@JoinColumn(name = "noteID")
+	private Note note ;
 	
 }

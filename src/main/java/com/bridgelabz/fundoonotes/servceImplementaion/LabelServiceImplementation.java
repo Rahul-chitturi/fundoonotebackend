@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.bridgelabz.fundoonotes.dto.LabelDto;
 import com.bridgelabz.fundoonotes.exception.LabelAlreadyExistException;
 import com.bridgelabz.fundoonotes.model.Label;
-import com.bridgelabz.fundoonotes.model.NoteModel;
+import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.model.User;
 import com.bridgelabz.fundoonotes.repository.LabelRepository;
 import com.bridgelabz.fundoonotes.repository.NoteRepository;

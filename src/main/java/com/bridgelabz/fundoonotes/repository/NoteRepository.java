@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.bridgelabz.fundoonotes.model.NoteModel;
+import com.bridgelabz.fundoonotes.model.Note;
 
 
-public interface NoteRepository extends JpaRepository<NoteModel, Long>{
+public interface NoteRepository extends JpaRepository<Note, Long>{
 
 	@Modifying
 	@Transactional
@@ -25,10 +25,10 @@ public interface NoteRepository extends JpaRepository<NoteModel, Long>{
 	
 
 	@Query(value = "select * from note where id = ?", nativeQuery = true)
-	NoteModel checkById(long id);
+	Note checkById(long id);
 	
 	@Query(value = "select * from note where id = ? and user_id = ?", nativeQuery = true)
-	NoteModel FindByNotedIdAndUserId(long noteId, long userId);
+	Note FindByNotedIdAndUserId(long noteId, long userId);
 	
 	@Modifying
 	@Transactional

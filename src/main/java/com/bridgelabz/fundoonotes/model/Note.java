@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class NoteModel {
+public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -43,7 +43,7 @@ public class NoteModel {
 	
 	private Date updatedAt;
 	
-	public NoteModel(String title, String contant) {
+	public Note(String title, String contant) {
 		super();
 		this.title = title;
 		this.contant = contant;
