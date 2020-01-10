@@ -65,25 +65,33 @@ public class LabelServiceImplementation implements LabelService {
 
 		Long userId = jwtGenerator.parseJWT(token);
 		User isUserAvailable = userRepository.findoneById(userId);
+		Note noteInfo = noterepository.checkById(noteId);
 		if (isUserAvailable != null) {
-			String labelName = labelDto.getName();
-			Label label = labelRepository.findOneByName(labelName);
-			if (label == null) {
-				Label newLabel = new Label();
-				BeanUtils.copyProperties(labelDto, newLabel);
-				newLabel.setUserLabel(isUserAvailable);
-				labelRepository.save(newLabel);
-				Note noteInfo = noterepository.checkById(noteId);
-				if (noteInfo != null) {
+			if (noteInfo != null) {
+				String labelName = labelDto.getName();
+				Label label = labelRepository.findOneByName(labelName);
+				// Label labelNote =
+				// labelRepository.findoneByLabelIdAndNoteId(label.getLableId(), noteId);
+				if (label == null) {
+					Label newLabel = new Label();
+					BeanUtils.copyProperties(labelDto, newLabel);
+					newLabel.setUserLabel(isUserAvailable);
+					labelRepository.insertLabelData(newLabel.getName(), userId);
 					noterepository.insertDataToMap(noteId, newLabel.getLableId());
-					return newLabel;
+					return label;
+				} else {
+					Object map = labelRepository.findoneByLabelIdAndNoteId(label.getLableId(), noteId);
+					// map.stream().forEach((result)->{System.out.println(result[0]);});
+					if (map == null) {
+						noterepository.insertDataToMap(noteId, label.getLableId());
+					}
+					return label;
 				}
-				return newLabel;
-			} else {
-				throw new LabelAlreadyExistException("Label is already exist...");
 			}
+			return null;
+		} else {
+			throw new LabelAlreadyExistException("Label is already exist...");
 		}
-		return null;
 
 	}
 
@@ -141,7 +149,10 @@ public class LabelServiceImplementation implements LabelService {
 		if (isNoteAvailable != null) {
 			Label isLabelAvailable = labelRepository.findoneById(labelId, userId);
 			if (isLabelAvailable != null) {
-				noterepository.insertDataToMap(noteId, isLabelAvailable.getLableId());
+				Object map = labelRepository.findoneByLabelIdAndNoteId(isLabelAvailable.getLableId(), noteId);
+				if (map == null) {
+					noterepository.insertDataToMap(noteId, isLabelAvailable.getLableId());
+				}
 				return isLabelAvailable;
 			}
 		}

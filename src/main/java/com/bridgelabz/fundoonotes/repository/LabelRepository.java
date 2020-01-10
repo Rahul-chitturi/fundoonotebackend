@@ -10,7 +10,7 @@ import com.bridgelabz.fundoonotes.model.Label;
 
 public interface LabelRepository extends CrudRepository<Label, Long>{
 
-	@Query(value = " select * from label where name = ?" , nativeQuery =  true)
+	@Query(value = " select * from label  where name = ?" , nativeQuery =  true)
 	Label findOneByName(String labelName);
 
 	@Modifying
@@ -18,7 +18,7 @@ public interface LabelRepository extends CrudRepository<Label, Long>{
 	@Query(value = " insert into label (name, user_id) values (?, ?) " , nativeQuery =  true)
 	void insertLabelData(String name , Long userId);
 	
-	@Query(value = " select * from label where lable_id = ? and user_id" , nativeQuery =  true)
+	@Query(value = " select * from label where lable_id = ? and user_id =?" , nativeQuery =  true)
 	Label findoneById(Long id , Long userId);
 
 	@Modifying
@@ -40,7 +40,11 @@ public interface LabelRepository extends CrudRepository<Label, Long>{
 	@Transactional
 	@Query(value = " update table note set name = ? where label_id = ?  " , nativeQuery =  true)
 	void update(String name , Long id);
-	
-	
+
+//	@Query(value = " select * from label , label_note where lable_id = ? and user_id =?" , nativeQuery =  true)
+//	Label findoneByLabelIdAndNoteId(Long lableId, Long noteId);
+//	
+	@Query(value = " select * from  label_note where label_note_id = ? and note_id =?" , nativeQuery =  true)
+    Object findoneByLabelIdAndNoteId(Long lableId, Long noteId);
 	
 }

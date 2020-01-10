@@ -63,6 +63,6 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	@Modifying
 	@Transactional
 	@Query(value = "insert into label_note(note_id ,  label_note_id)  values(?, ?)" ,  nativeQuery = true )
-	void insertDataToMap(Long noteId  , Long labelNoteId  ); 
+	int insertDataToMap(Long noteId  , Long labelNoteId  ); 
 	
 }
