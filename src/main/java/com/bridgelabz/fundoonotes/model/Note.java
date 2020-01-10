@@ -1,6 +1,7 @@
 package com.bridgelabz.fundoonotes.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -60,7 +63,10 @@ public class Note {
 	
 	private String localReminderStatus;
 
-	
+
+	@ManyToMany
+	@JoinTable(name = "Label_Note", joinColumns = @JoinColumn(name = "note_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "label_Note_id", referencedColumnName = "lableId"))
+	private List<Label> labels;
 
 	public boolean isPinned() {
 		return isPinned;

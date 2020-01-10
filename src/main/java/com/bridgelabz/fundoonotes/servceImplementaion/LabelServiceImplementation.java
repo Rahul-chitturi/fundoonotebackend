@@ -1,11 +1,7 @@
 package com.bridgelabz.fundoonotes.servceImplementaion;
 
-import java.util.List;
-import java.util.Optional;
-
-
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.LabelDto;
@@ -36,42 +32,78 @@ public  class LabelServiceImplementation implements LabelService {
 	private NoteRepository noterepository;
 
 	@Override
-	public boolean createlabel(LabelDto labelDto, String token) throws Exception {
-		// TODO Auto-generated method stub
+	public Label createlabel(LabelDto labelDto, String token)  {
+		long userId = jwtGenerator.parseJWT(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable!=null) {
+			String labelName = labelDto.getName();
+			Label label  = labelRepository.findOneByName(labelName);
+			if (label == null) {
+			Label newLabel = new Label();
+			BeanUtils.copyProperties(labelDto, newLabel);
+				newLabel.setUserLabel(isUserAvailable);
+				labelRepository.insertLabelData(newLabel.getName(), userId);
+				return newLabel;
+			} else {
+				throw new LabelAlreadyExistException("Label is already exist...");
+			}
+		}
+		return null;
+
+	}
+
+	@Override
+	public Label createOrMapWithNote(LabelDto labelDto, Long noteId, String token)  {
+		
+		Long userId = jwtGenerator.parseJWT(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable!=null) {
+			String labelName = labelDto.getName();
+			Label label  = labelRepository.findOneByName(labelName);
+			if (label == null) {
+			Label newLabel = new Label();
+			BeanUtils.copyProperties(labelDto, newLabel);
+				newLabel.setUserLabel(isUserAvailable);
+				labelRepository.save(newLabel);
+			   Note noteInfo = noterepository.checkById(noteId);
+				if (noteInfo!=null) {
+                      noterepository.insertDataToMap(noteId , newLabel.getLableId());
+					return  newLabel;
+				}
+				return newLabel;
+			} else {
+				throw new LabelAlreadyExistException("Label is already exist...");
+			}
+		}
+		return null;
+		
+	
+	}
+
+	@Override
+	public boolean removeLabels(String token, Long noteId, Long labelId) {
+		
 		return false;
 	}
 
 	@Override
-	public boolean createOrMapWithNote(LabelDto labelDto, long noteId, String token) throws Exception {
-		// TODO Auto-generated method stub
+	public boolean deletepermanently(String token, Long labelId) {
+		
 		return false;
 	}
 
 	@Override
-	public boolean removeLabels(String token, long noteId, long labelId) {
-		// TODO Auto-generated method stub
+	public boolean updateLabel(String token, Long labelId, LabelDto labelDto) {
+
 		return false;
 	}
-
-	@Override
-	public boolean deletepermanently(String token, long labelId) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updateLabel(String token, long labelId, LabelDto labelDto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
 
 	@Override
 	public boolean addLabels(String token, long noteId, long labelId) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
+	
 
 }

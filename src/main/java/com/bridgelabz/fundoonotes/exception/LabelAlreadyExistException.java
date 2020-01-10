@@ -1,5 +1,5 @@
 package com.bridgelabz.fundoonotes.exception;
-public class LabelAlreadyExistException extends Exception{
+public class LabelAlreadyExistException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 

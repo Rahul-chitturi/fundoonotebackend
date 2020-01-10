@@ -60,4 +60,9 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	@Query(value = "update note set local_reminder_status = ? , local_reminder = ? , updated_at = ? where user_id = ? AND id = ?" ,  nativeQuery = true)
 	void reminder(String localReminderStatus, Date localReminder, Date updatedAt, long id, long noteId);
 
+	@Modifying
+	@Transactional
+	@Query(value = "insert into label_note(note_id ,  label_note_id)  values(?, ?)" ,  nativeQuery = true )
+	void insertDataToMap(Long noteId  , Long labelNoteId  ); 
+	
 }

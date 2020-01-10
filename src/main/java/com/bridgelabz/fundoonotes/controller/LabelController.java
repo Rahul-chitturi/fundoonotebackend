@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotes.dto.LabelDto;
+import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.LabelService;
 
@@ -29,22 +30,22 @@ public class LabelController {
 
 	@PostMapping("/create")
 	public ResponseEntity<Response> createLabel(@Valid @RequestBody LabelDto labelDto, @RequestHeader("token") String token ,  BindingResult bindingResult)
-			throws Exception {
+		 {
           if (bindingResult.hasErrors()) {
         	  return  ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(new Response(bindingResult.getAllErrors().get(0).getDefaultMessage(), 400));
           }
-		boolean result = labelService.createlabel(labelDto, token);
-		return (result) ? ResponseEntity.status(HttpStatus.OK).body(new Response("Label is Created", 200))
-				: ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Already exist in lable ", 400));
+		Label result = labelService.createlabel(labelDto, token);
+		return result!=null ? ResponseEntity.status(HttpStatus.OK).body(new Response("Label is Created", 200 ))
+				: ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Already exist in lable ", 400 ));
 
 	}
 
 
 	@PostMapping("/maplabel/{noteId}")
-	public ResponseEntity<Response> labelMapToNote(@RequestBody LabelDto labelDto, @PathVariable("noteId") long noteId,
-			@RequestHeader("token") String token) throws Exception {
-		boolean result = labelService.createOrMapWithNote(labelDto, noteId, token);
-		return (result) ? ResponseEntity.status(HttpStatus.OK).body(new Response("Label is created successfully", 200))
+	public ResponseEntity<Response> labelMapToNote(@RequestBody LabelDto labelDto, @PathVariable("noteId") Long noteId,
+			@RequestHeader("token") String token) {
+		Label result = labelService.createOrMapWithNote(labelDto, noteId, token);
+		return result!=null ? ResponseEntity.status(HttpStatus.OK).body(new Response("Label is created successfully", 200))
 				: ResponseEntity.status(HttpStatus.NOT_FOUND)
 						.body(new Response("The label you are trying to create is already exist!!!", 400));
 	}
