@@ -37,11 +37,11 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User registration(UserDto user) {
-System.out.println("dsd");
+
 		try {
 			User checkEmailAvailability = userRepository.findByEmailAddress(user.getEmail());
 			if (checkEmailAvailability == null) {
-				System.out.println("dds");
+		
 				User userDetails = new User(user.getFirstName(), user.getLastName(), user.getEmail(),
 						user.getMobilenumber(), user.getPassword());
 				userDetails.setCreatedAt();
