@@ -14,8 +14,8 @@ import com.bridgelabz.fundoonotes.model.Collaborator;
 @Repository
 public interface CollaboratorRepository extends JpaRepository<Collaborator, Long>{
 	
-	@Query(value = "select * from collaborator where email = ? " ,  nativeQuery = true)
-	Collaborator findOneByEmail(String email);
+	@Query(value = "select * from collaborator where email = ? and noteid =? " ,  nativeQuery = true)
+	Collaborator findOneByEmail(String email , Long noteId);
 	
 	@Modifying
 	@Transactional

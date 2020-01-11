@@ -41,7 +41,7 @@ public class CollaboratorImplementation implements CollaboratorService {
 		Long userId = getRedisCecheId(token);
 
 		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
-		Collaborator toFindAllreadyExists = collaboratorRepository.findOneByEmail(collaboratorDto.getEmail());
+		Collaborator toFindAllreadyExists = collaboratorRepository.findOneByEmail(collaboratorDto.getEmail(), noteId);
 		if (noteModel != null && toFindAllreadyExists == null) {
 			Collaborator collaborator = new Collaborator();
 			BeanUtils.copyProperties(collaboratorDto, collaborator);
@@ -73,8 +73,8 @@ public class CollaboratorImplementation implements CollaboratorService {
 		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
 		if (noteModel != null) {
 			i = collaboratorRepository.deleteOneById(cId);
-			
-		}else {
+
+		} else {
 			return i;
 		}
 		return i;
@@ -85,10 +85,10 @@ public class CollaboratorImplementation implements CollaboratorService {
 		Long userId = getRedisCecheId(token);
 
 		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
-if(noteModel!=null) {
-return 	collaboratorRepository.getAllNoteCollaborators(noteId);
-}
-		  
+		if (noteModel != null) {
+			return collaboratorRepository.getAllNoteCollaborators(noteId);
+		}
+
 		return null;
 	}
 
