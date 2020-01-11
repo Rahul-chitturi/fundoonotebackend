@@ -1,9 +1,12 @@
 package com.bridgelabz.fundoonotes.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
+import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.NoteService;
 
@@ -135,5 +139,13 @@ public class NoteController {
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
 		}
+	}
+	
+	@GetMapping("/getNotes")
+	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token,
+			@RequestParam("noteId") long noteId) throws Exception {
+		List<Note> noteList = noteService.getAllNotes(token, noteId);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(new Response("Notes releated to current labelId are", 200, noteList));
 	}
 }

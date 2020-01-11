@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -21,11 +23,12 @@ public class Label {
 	private Long lableId;
 
 	private String name;
-
+    @JsonIgnore
 	@ManyToMany(mappedBy = "labels")
 	private List<Note> noteList;
 	
 
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User userLabel;

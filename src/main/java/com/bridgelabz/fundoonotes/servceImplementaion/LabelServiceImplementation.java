@@ -1,6 +1,8 @@
 package com.bridgelabz.fundoonotes.servceImplementaion;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,11 +79,13 @@ public class LabelServiceImplementation implements LabelService {
 					BeanUtils.copyProperties(labelDto, newLabel);
 					newLabel.setUserLabel(isUserAvailable);
 					labelRepository.insertLabelData(newLabel.getName(), userId);
-					noterepository.insertDataToMap(noteId, newLabel.getLableId());
-					return label;
+					Label labelCreate = labelRepository.findOneByName(newLabel.getName());
+					noterepository.insertDataToMap(noteId, labelCreate.getLableId());
+					
+					return labelCreate;
 				} else {
 					Object map = labelRepository.findoneByLabelIdAndNoteId(label.getLableId(), noteId);
-					// map.stream().forEach((result)->{System.out.println(result[0]);});
+					//map.stream().forEach((result)->{System.out.println(result[0]);});
 					if (map == null) {
 						noterepository.insertDataToMap(noteId, label.getLableId());
 					}
@@ -154,6 +158,34 @@ public class LabelServiceImplementation implements LabelService {
 					noterepository.insertDataToMap(noteId, isLabelAvailable.getLableId());
 				}
 				return isLabelAvailable;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<Label> getAllLabels(String token) {
+		Long userId = getRedisCecheId(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable != null) {
+		List<Label> labels=  labelRepository.findAll(userId);
+	
+		labels.stream().map(e -> LabelDto.valueOf(e)).collect(Collectors.toList());
+		return labels;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Note> getAllNotes(String token, long labelId) {
+		Long userId = getRedisCecheId(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable!=null) {
+			Label isLabelAvailable = labelRepository.findoneById(labelId , userId);
+			if (isLabelAvailable!=null) {
+				List<Note> list =labelRepository.findListOfNoteOfLabel(labelId);
+		list.stream().forEach((result)->{System.out.println(result.getId());});
+				return list;
 			}
 		}
 		return null;

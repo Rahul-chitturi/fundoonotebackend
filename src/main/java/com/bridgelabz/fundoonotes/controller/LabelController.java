@@ -1,5 +1,7 @@
 package com.bridgelabz.fundoonotes.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotes.dto.LabelDto;
 import com.bridgelabz.fundoonotes.model.Label;
+import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.LabelService;
 
@@ -95,6 +99,23 @@ public class LabelController {
 				? ResponseEntity.status(HttpStatus.OK).body(new Response("Label is updated successfully", 200))
 				: ResponseEntity.status(HttpStatus.NOT_FOUND)
 						.body(new Response("The label you are trying to update is not available", 400));
+	}
+
+	@GetMapping("/getAlllabels")
+	@ApiOperation(value = "Api to get all the labels related to user for Fundoonotes", response = Response.class)
+	public ResponseEntity<Response> getAllLabels(@RequestHeader("token") String token) throws Exception {
+		List<Label> labelList = labelService.getAllLabels(token);
+		return labelList!=null? ResponseEntity.status(HttpStatus.OK).body(new Response("Label List are", 200, labelList))
+				: ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("not able to get the list", 400));
+}
+	
+	
+	@GetMapping("labels/getNotes")
+	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token,
+			@RequestParam("labelId") long labelId) throws Exception {
+		List<Note> noteList = labelService.getAllNotes(token, labelId);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(new Response("Notes releated to current labelId are", 200, noteList));
 	}
 
 	@PostMapping("addlabels")

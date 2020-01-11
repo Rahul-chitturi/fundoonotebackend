@@ -1,5 +1,6 @@
 package com.bridgelabz.fundoonotes.servceImplementaion;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -220,6 +221,12 @@ public class NoteServiceImplementation implements NoteService {
 		}
 		Long userId = (Long) redis.opsForValue().get(redisTokenKey);
 		return userId;
+	}
+
+	@Override
+	public List<Note> getAllNotes(String token, long noteId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

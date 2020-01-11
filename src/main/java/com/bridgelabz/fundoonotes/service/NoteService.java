@@ -1,7 +1,10 @@
 package com.bridgelabz.fundoonotes.service;
 
+import java.util.List;
+
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
+import com.bridgelabz.fundoonotes.model.Note;
 
 public interface NoteService {
 
@@ -20,5 +23,7 @@ public interface NoteService {
 	boolean updateNote(NoteDto noteDto, String token, long noteId);
 
 	boolean reminder(ReminderDto reminderDto, String token, long noteId);
+
+	List<Note> getAllNotes(String token, long noteId);
 
 }
