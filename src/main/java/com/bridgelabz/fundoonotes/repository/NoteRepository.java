@@ -1,6 +1,7 @@
 package com.bridgelabz.fundoonotes.repository;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.model.Note;
 
 
@@ -63,6 +65,12 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	@Modifying
 	@Transactional
 	@Query(value = "insert into label_note(note_id ,  label_note_id)  values(?, ?)" ,  nativeQuery = true )
-	int insertDataToMap(Long noteId  , Long labelNoteId  ); 
+	int insertDataToMap(Long noteId  , Long labelNoteId  );
+	
+	@Query(value = "select * from note where user_id = ?", nativeQuery = true)
+	List<Note> findAll(Long userId);
+
+	@Query(name="tofindlabelfornote", nativeQuery = true)
+	List<Label> getLabelByNoteId(long noteId); 
 	
 }

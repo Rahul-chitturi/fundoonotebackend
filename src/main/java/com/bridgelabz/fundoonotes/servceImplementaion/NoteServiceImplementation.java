@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
+import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.model.User;
 import com.bridgelabz.fundoonotes.repository.NoteRepository;
@@ -223,9 +224,30 @@ public class NoteServiceImplementation implements NoteService {
 		return userId;
 	}
 
+
+
 	@Override
-	public List<Note> getAllNotes(String token, long noteId) {
-		// TODO Auto-generated method stub
+	public List<Note> getAllNotes(String token) {
+		Long userId = getRedisCecheId(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable != null) {
+		List<Note> notes=  noteRepository.findAll(userId);
+		return notes;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Label> getAllLabelsOfOneNote(String token, long noteId) {
+		Long userId = getRedisCecheId(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable != null) {
+			Note note = noteRepository.checkById(noteId);
+			if(note!=null) {
+				List<Label> labels = noteRepository.getLabelByNoteId(noteId);
+			return labels;
+			}
+		}
 		return null;
 	}
 

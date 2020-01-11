@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
+import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.model.Note;
 
 public interface NoteService {
@@ -24,6 +25,8 @@ public interface NoteService {
 
 	boolean reminder(ReminderDto reminderDto, String token, long noteId);
 
-	List<Note> getAllNotes(String token, long noteId);
+	List<Note> getAllNotes(String token);
+
+	List<Label> getAllLabelsOfOneNote(String token, long noteId);
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotes.dto.NoteDto;
 import com.bridgelabz.fundoonotes.dto.ReminderDto;
+import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.NoteService;
@@ -141,11 +142,18 @@ public class NoteController {
 		}
 	}
 	
-	@GetMapping("/getNotes")
-	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token,
-			@RequestParam("noteId") long noteId) throws Exception {
-		List<Note> noteList = noteService.getAllNotes(token, noteId);
+	@GetMapping("/getnotes")
+	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token)  {
+		List<Note> LabelList = noteService.getAllNotes(token);
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(new Response("Notes releated to current labelId are", 200, noteList));
+				.body(new Response("all notes of user", 200, LabelList));
 	}
+	@GetMapping("/getnotelabels")
+	public ResponseEntity<Response> getAllNoteLabels(@RequestHeader("token") String token,
+			@RequestParam("noteId") long noteId) throws Exception {
+		List<Label> noteList = noteService.getAllLabelsOfOneNote(token, noteId);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(new Response("Labels releated to current Note are", 200, noteList));
+	}
+	
 }
