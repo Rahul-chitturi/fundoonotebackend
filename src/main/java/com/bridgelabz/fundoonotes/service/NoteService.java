@@ -29,4 +29,6 @@ public interface NoteService {
 
 	List<Label> getAllLabelsOfOneNote(String token, long noteId);
 
+	List<Note> getAllNotesInSort(String token, String sortBy, String order);
+
 }

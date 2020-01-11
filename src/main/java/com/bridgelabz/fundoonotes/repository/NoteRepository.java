@@ -69,8 +69,16 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	
 	@Query(value = "select * from note where user_id = ?", nativeQuery = true)
 	List<Note> findAll(Long userId);
+	
+	@Query(value = "select * from note where user_id = ? order by title DESC ", nativeQuery = true)
+	List<Note> findAllInDesc(Long userId );
 
 	@Query(name="tofindlabelfornote", nativeQuery = true)
-	List<Label> getLabelByNoteId(long noteId); 
+	List<Label> getLabelByNoteId(long noteId);
+
+	@Query(value = "select * from note where user_id = ? order by updated_at Desc", nativeQuery = true)
+	List<Note> findAllInDescbyDate(Long userId); 
 	
+	@Query(value = "select * from note where user_id = ? order by updated_at ", nativeQuery = true)
+	List<Note> findAllInbyDate(Long userId); 
 }

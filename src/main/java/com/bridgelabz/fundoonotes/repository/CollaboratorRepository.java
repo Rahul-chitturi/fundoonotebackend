@@ -1,5 +1,7 @@
 package com.bridgelabz.fundoonotes.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +21,8 @@ public interface CollaboratorRepository extends JpaRepository<Collaborator, Long
 	@Transactional
 	@Query(value =  "delete from collaborator where id = ?" , nativeQuery =  true )
 	 int deleteOneById(Long cId);
+	
+	@Query(value = " select * from collaborator where noteid = ?" , nativeQuery = true)
+	List<Collaborator> getAllNoteCollaborators( Long noteId);
 	
 }

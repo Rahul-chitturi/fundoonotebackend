@@ -251,4 +251,28 @@ public class NoteServiceImplementation implements NoteService {
 		return null;
 	}
 
+	@Override
+	public List<Note> getAllNotesInSort(String token, String sortBy, String order) {
+          if(sortBy.equals("name")&& order.equals("asc")) {
+        	 return getAllNotes(token);  
+          }
+		Long userId = getRedisCecheId(token);
+		User isUserAvailable = userRepository.findoneById(userId);
+		if (isUserAvailable != null) {
+			if(sortBy.equals("name") && order.equals("desc")) {
+				List<Note> notes=  noteRepository.findAllInDesc(userId);
+				return notes;	
+			}else if(sortBy.equals("date") && order.equals("desc")) {
+				List<Note> notes=  noteRepository.findAllInDescbyDate(userId);
+				return notes;			
+			}else if(sortBy.equals("date") && order.equals("asc")) {
+				List<Note> notes=  noteRepository.findAllInbyDate(userId);
+				return notes;	
+			}else {
+	        	 return getAllNotes(token); 
+			}
+		}
+		return null;
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.bridgelabz.fundoonotes.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,6 +48,13 @@ public class CollaboratorController {
  int i =    collaboratorService.deleteCollaborator(cId , token , noteId);
 		return  i==1? ResponseEntity.status(HttpStatus.CREATED)
 				.body(new Response("deleted successfully", 200, null)):ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+	}
+	
+	@GetMapping("/getallnotecollaborats/{id}")
+	public ResponseEntity<Response> getAllCollaborator(@PathVariable(value = "id") Long noteId ,@RequestHeader("token") String token  ) {
+ List<Collaborator> collList =   collaboratorService.getAllNoteCollaborators(token , noteId);
+		return collList!= null? ResponseEntity.status(HttpStatus.CREATED)
+				.body(new Response("all note collaborators are", 200, collList)):ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
 	}
 	
 }

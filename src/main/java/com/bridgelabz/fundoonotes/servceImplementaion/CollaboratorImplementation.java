@@ -1,5 +1,6 @@
 package com.bridgelabz.fundoonotes.servceImplementaion;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.BeanUtils;
@@ -77,6 +78,18 @@ public class CollaboratorImplementation implements CollaboratorService {
 			return i;
 		}
 		return i;
+	}
+
+	@Override
+	public List<Collaborator> getAllNoteCollaborators(String token, Long noteId) {
+		Long userId = getRedisCecheId(token);
+
+		Note noteModel = noteRepository.FindByNotedIdAndUserId(noteId, userId);
+if(noteModel!=null) {
+return 	collaboratorRepository.getAllNoteCollaborators(noteId);
+}
+		  
+		return null;
 	}
 
 }

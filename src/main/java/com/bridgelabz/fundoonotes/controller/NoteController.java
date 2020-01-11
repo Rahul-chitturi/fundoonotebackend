@@ -148,12 +148,20 @@ public class NoteController {
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(new Response("all notes of user", 200, LabelList));
 	}
+	
 	@GetMapping("/getnotelabels")
 	public ResponseEntity<Response> getAllNoteLabels(@RequestHeader("token") String token,
 			@RequestParam("noteId") long noteId) throws Exception {
 		List<Label> noteList = noteService.getAllLabelsOfOneNote(token, noteId);
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(new Response("Labels releated to current Note are", 200, noteList));
+	}
+	
+	@GetMapping("/getnotes/{sort}/{order}")
+	public ResponseEntity<Response> getAllNotesInSort(@RequestHeader("token") String token , @PathVariable("sort") String sortBy , @PathVariable("order") String order)  {
+		List<Note> LabelList = noteService.getAllNotesInSort(token , sortBy , order);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(new Response("all notes of user sort by "+sortBy + " Order in " + order, 200, LabelList));
 	}
 	
 }
