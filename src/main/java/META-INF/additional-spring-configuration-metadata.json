@@ -1,0 +1,57 @@
+{"properties": [
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  },
+  {
+    "name": "aws.accessKey",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.accessKey'"
+  },
+  {
+    "name": "elasticsearch.host",
+    "type": "java.lang.String",
+    "description": "A description for 'elasticsearch.host'"
+  },
+  {
+    "name": "aws.keyId",
+    "type": "java.lang.String",
+    "description": "A description for 'aws.keyId'"
+  }
+]}

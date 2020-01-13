@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.bridgelabz.fundoonotes.configaration.RabbitMQSender;
 import com.bridgelabz.fundoonotes.dto.LoginDetails;
 import com.bridgelabz.fundoonotes.dto.ResetPassword;
 import com.bridgelabz.fundoonotes.dto.UserDto;
 import com.bridgelabz.fundoonotes.model.User;
 import com.bridgelabz.fundoonotes.repository.UserRepository;
+import com.bridgelabz.fundoonotes.response.MailObject;
 import com.bridgelabz.fundoonotes.service.UserService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
 import com.bridgelabz.fundoonotes.utility.SpringEmail;
@@ -35,6 +37,8 @@ public class UserServiceImplementation implements UserService {
 	@Autowired
 	private JwtGenerator tokenGenerator;
 
+	@Autowired
+	private RabbitMQSender rabbitMQSender;
 	@Override
 	public User registration(UserDto user) {
 
@@ -52,7 +56,12 @@ public class UserServiceImplementation implements UserService {
 				User userDetailtosendMail = userRepository.findByEmailAddress(user.getEmail());
 				String response = "http://localhost:8080/users/verify/"
 						+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
-				mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
+				MailObject mailObject = new MailObject();
+				mailObject.setEmail(userDetailtosendMail.getEmail());
+				mailObject.setMessage(response);
+				mailObject.setSubject(" user verification");
+				rabbitMQSender.send(mailObject);
+				//mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				userDetailtosendMail.setPassword("*****");
 				return userDetailtosendMail;
 			} else {
