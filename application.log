@@ -7966,4 +7966,293 @@ Caused by: java.io.StreamCorruptedException: invalid internal transport message 
 ""2020-01-14 18:37:51 - request [DELETE http://localhost:9200/bridgelabz/note/6?timeout=1m] returned 1 warnings: [299 Elasticsearch-7.5.1-3ae9ac9a93c95bd0cdc054951cf95d88e1e18d96 "[types removal] Specifying types in document index requests is deprecated, use the /{index}/_doc/{id} endpoint instead."]
 ""2020-01-14 18:37:55 - Id is :1note ID is: 7
 ""2020-01-14 18:37:55 - request [DELETE http://localhost:9200/bridgelabz/note/7?timeout=1m] returned 1 warnings: [299 Elasticsearch-7.5.1-3ae9ac9a93c95bd0cdc054951cf95d88e1e18d96 "[types removal] Specifying types in document index requests is deprecated, use the /{index}/_doc/{id} endpoint instead."]
+""2020-01-14 18:39:34 - Waiting for workers to finish.
+""2020-01-14 18:39:35 - Successfully waited for workers to finish.
+""2020-01-14 18:40:04 - Shutdown ignored - container is not active already
+""2020-01-14 18:40:04 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:40:04 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:40:04 - HikariPool-4 - Shutdown initiated...
+""2020-01-14 18:40:04 - HikariPool-4 - Shutdown completed.
+""2020-01-14 18:40:04 - Starting FundoonotesApplication on unisco with PID 22607 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-14 18:40:04 - No active profile set, falling back to default profiles: default
+""2020-01-14 18:40:05 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:05 - Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:40:05 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:05 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:05 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:05 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:05 - Finished Spring Data repository scanning in 21ms. Found 1 Elasticsearch repository interfaces.
+""2020-01-14 18:40:05 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:05 - Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:40:05 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:05 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:05 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:05 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:05 - Finished Spring Data repository scanning in 8ms. Found 0 Reactive Elasticsearch repository interfaces.
+""2020-01-14 18:40:05 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:05 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-14 18:40:05 - Finished Spring Data repository scanning in 21ms. Found 5 JPA repository interfaces.
+""2020-01-14 18:40:05 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:05 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-14 18:40:05 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:05 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:05 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:05 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:05 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:05 - Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+""2020-01-14 18:40:05 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-14 18:40:05 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-14 18:40:05 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-14 18:40:05 - Starting service [Tomcat]
+""2020-01-14 18:40:05 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-14 18:40:05 - Initializing Spring embedded WebApplicationContext
+""2020-01-14 18:40:05 - Root WebApplicationContext: initialization completed in 1189 ms
+""2020-01-14 18:40:06 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-14 18:40:06 - HikariPool-5 - Starting...
+""2020-01-14 18:40:06 - HikariPool-5 - Start completed.
+""2020-01-14 18:40:06 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-14 18:40:06 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-14 18:40:06 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:40:06 - LiveReload server is running on port 35729
+""2020-01-14 18:40:07 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-14 18:40:07 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:40:07 - Context refreshed
+""2020-01-14 18:40:07 - Found 1 custom documentation plugin(s)
+""2020-01-14 18:40:07 - Scanning for api listing references
+""2020-01-14 18:40:07 - Generating unique operation named: getAllNotesUsingGET_1
+""2020-01-14 18:40:07 - Generating unique operation named: trashUsingPUT_1
+""2020-01-14 18:40:07 - Attempting to connect to: [localhost:5672]
+""2020-01-14 18:40:07 - Created new connection: rabbitConnectionFactory#23f6880e:0/SimpleConnection@7ec2d90f [delegate=amqp://guest@127.0.0.1:5672/, localPort= 37026]
+""2020-01-14 18:40:07 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-14 18:40:07 - Started FundoonotesApplication in 3.012 seconds (JVM running for 1198.637)
+""2020-01-14 18:40:07 - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   ElasticsearchDataConfiguration.RestClientConfiguration#elasticsearchTemplate matched:
+      - @ConditionalOnBean (types: org.elasticsearch.client.RestHighLevelClient; SearchStrategy: all) found bean 'client'; @ConditionalOnBean (names: elasticsearchTemplate types: org.springframework.data.elasticsearch.core.ElasticsearchOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   ElasticsearchAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.data.elasticsearch.cluster-nodes) did not find property 'cluster-nodes' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'org.elasticsearch.client.Client', 'org.springframework.data.elasticsearch.client.TransportClientFactoryBean' (OnClassCondition)
+
+   ElasticsearchDataConfiguration.TransportClientConfiguration#elasticsearchTemplate:
+      Did not match:
+         - @ConditionalOnBean (types: org.elasticsearch.client.Client; SearchStrategy: all) did not find any beans of type org.elasticsearch.client.Client (OnBeanCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+""2020-01-14 18:40:32 - Waiting for workers to finish.
+""2020-01-14 18:40:32 - Successfully waited for workers to finish.
+""2020-01-14 18:40:32 - Shutdown ignored - container is not active already
+""2020-01-14 18:40:32 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:40:32 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:40:32 - HikariPool-5 - Shutdown initiated...
+""2020-01-14 18:40:32 - HikariPool-5 - Shutdown completed.
+""2020-01-14 18:40:32 - Starting FundoonotesApplication on unisco with PID 22607 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-14 18:40:32 - No active profile set, falling back to default profiles: default
+""2020-01-14 18:40:33 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:33 - Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:40:33 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:33 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:33 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:33 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:40:33 - Finished Spring Data repository scanning in 28ms. Found 1 Elasticsearch repository interfaces.
+""2020-01-14 18:40:33 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:33 - Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:40:33 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:33 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:33 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:33 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:40:33 - Finished Spring Data repository scanning in 10ms. Found 0 Reactive Elasticsearch repository interfaces.
+""2020-01-14 18:40:33 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:33 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-14 18:40:33 - Finished Spring Data repository scanning in 27ms. Found 5 JPA repository interfaces.
+""2020-01-14 18:40:33 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:40:33 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-14 18:40:33 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:33 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:33 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:33 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:33 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:40:33 - Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+""2020-01-14 18:40:34 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-14 18:40:34 - The MBean registry cannot be disabled because it has already been initialised
+""2020-01-14 18:40:34 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-14 18:40:34 - Starting service [Tomcat]
+""2020-01-14 18:40:34 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-14 18:40:34 - Initializing Spring embedded WebApplicationContext
+""2020-01-14 18:40:34 - Root WebApplicationContext: initialization completed in 1265 ms
+""2020-01-14 18:40:34 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-14 18:40:34 - HikariPool-6 - Starting...
+""2020-01-14 18:40:34 - HikariPool-6 - Start completed.
+""2020-01-14 18:40:34 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-14 18:40:34 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-14 18:40:34 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:40:34 - LiveReload server is running on port 35729
+""2020-01-14 18:40:35 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-14 18:40:35 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:40:35 - no modules loaded
+""2020-01-14 18:40:35 - loaded plugin [org.elasticsearch.index.reindex.ReindexPlugin]
+""2020-01-14 18:40:35 - loaded plugin [org.elasticsearch.join.ParentJoinPlugin]
+""2020-01-14 18:40:35 - loaded plugin [org.elasticsearch.percolator.PercolatorPlugin]
+""2020-01-14 18:40:35 - loaded plugin [org.elasticsearch.script.mustache.MustachePlugin]
+""2020-01-14 18:40:35 - loaded plugin [org.elasticsearch.transport.Netty4Plugin]
+""2020-01-14 18:40:35 - Adding transport node : 127.0.0.1:9200
+""2020-01-14 18:41:06 - Context refreshed
+""2020-01-14 18:41:06 - Found 1 custom documentation plugin(s)
+""2020-01-14 18:41:06 - Scanning for api listing references
+""2020-01-14 18:41:06 - Generating unique operation named: getAllNotesUsingGET_1
+""2020-01-14 18:41:06 - Generating unique operation named: trashUsingPUT_1
+""2020-01-14 18:41:06 - Attempting to connect to: [localhost:5672]
+""2020-01-14 18:41:06 - Created new connection: rabbitConnectionFactory#10c001f1:0/SimpleConnection@c442865 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 37058]
+""2020-01-14 18:41:06 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-14 18:41:06 - Started FundoonotesApplication in 33.563 seconds (JVM running for 1257.429)
+""2020-01-14 18:41:06 - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   ElasticsearchAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.elasticsearch.client.Client', 'org.springframework.data.elasticsearch.client.TransportClientFactoryBean' (OnClassCondition)
+      - @ConditionalOnProperty (spring.data.elasticsearch.cluster-nodes) matched (OnPropertyCondition)
+
+   ElasticsearchAutoConfiguration#elasticsearchClient matched:
+      - @ConditionalOnBean (types: org.elasticsearch.client.transport.TransportClient; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   ElasticsearchDataConfiguration.TransportClientConfiguration#elasticsearchTemplate matched:
+      - @ConditionalOnBean (types: org.elasticsearch.client.Client; SearchStrategy: all) found bean 'elasticsearchClient'; @ConditionalOnBean (names: elasticsearchTemplate types: org.springframework.data.elasticsearch.core.ElasticsearchOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   ElasticsearchDataConfiguration.RestClientConfiguration#elasticsearchTemplate:
+      Did not match:
+         - @ConditionalOnBean (names: elasticsearchTemplate types: org.springframework.data.elasticsearch.core.ElasticsearchOperations; SearchStrategy: all) found beans of type 'org.springframework.data.elasticsearch.core.ElasticsearchOperations' elasticsearchTemplate and found beans named elasticsearchTemplate (OnBeanCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+""2020-01-14 18:41:39 - Application shutdown requested.
+""2020-01-14 18:41:39 - Waiting for workers to finish.
+""2020-01-14 18:41:39 - Successfully waited for workers to finish.
+""2020-01-14 18:41:40 - Shutdown ignored - container is not active already
+""2020-01-14 18:41:40 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:41:40 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:41:40 - HikariPool-6 - Shutdown initiated...
+""2020-01-14 18:41:40 - HikariPool-6 - Shutdown completed.
+""2020-01-14 18:41:48 - Starting FundoonotesApplication on unisco with PID 24552 (/home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes/target/classes started by user in /home/user/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/Fundoonotes)
+""2020-01-14 18:41:48 - No active profile set, falling back to default profiles: default
+""2020-01-14 18:41:48 - The Class-Path manifest attribute in /home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/home/user/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+""2020-01-14 18:41:48 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2020-01-14 18:41:48 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2020-01-14 18:41:52 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:41:52 - Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:41:52 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:41:52 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:41:52 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:41:52 - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+""2020-01-14 18:41:52 - Finished Spring Data repository scanning in 181ms. Found 1 Elasticsearch repository interfaces.
+""2020-01-14 18:41:52 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:41:52 - Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+""2020-01-14 18:41:52 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:41:52 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:41:52 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:41:52 - Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+""2020-01-14 18:41:52 - Finished Spring Data repository scanning in 25ms. Found 0 Reactive Elasticsearch repository interfaces.
+""2020-01-14 18:41:52 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:41:52 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2020-01-14 18:41:52 - Finished Spring Data repository scanning in 48ms. Found 5 JPA repository interfaces.
+""2020-01-14 18:41:53 - Multiple Spring Data modules found, entering strict repository configuration mode!
+""2020-01-14 18:41:53 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+""2020-01-14 18:41:53 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.CollaboratorRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:41:53 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.LabelRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:41:53 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.NoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:41:53 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.ProfilePicRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:41:53 - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotes.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+""2020-01-14 18:41:53 - Finished Spring Data repository scanning in 47ms. Found 0 Redis repository interfaces.
+""2020-01-14 18:41:55 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2020-01-14 18:41:56 - Tomcat initialized with port(s): 8080 (http)
+""2020-01-14 18:41:56 - Starting service [Tomcat]
+""2020-01-14 18:41:56 - Starting Servlet engine: [Apache Tomcat/9.0.29]
+""2020-01-14 18:41:57 - Initializing Spring embedded WebApplicationContext
+""2020-01-14 18:41:57 - Root WebApplicationContext: initialization completed in 8521 ms
+""2020-01-14 18:41:58 - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2020-01-14 18:41:58 - HHH000412: Hibernate Core {5.4.9.Final}
+""2020-01-14 18:41:58 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+""2020-01-14 18:41:58 - HikariPool-1 - Starting...
+""2020-01-14 18:41:59 - HikariPool-1 - Start completed.
+""2020-01-14 18:41:59 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+""2020-01-14 18:42:01 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2020-01-14 18:42:01 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2020-01-14 18:42:01 - LiveReload server is running on port 35729
+""2020-01-14 18:42:06 - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+""2020-01-14 18:42:06 - Initializing ExecutorService 'applicationTaskExecutor'
+""2020-01-14 18:42:08 - no modules loaded
+""2020-01-14 18:42:08 - loaded plugin [org.elasticsearch.index.reindex.ReindexPlugin]
+""2020-01-14 18:42:08 - loaded plugin [org.elasticsearch.join.ParentJoinPlugin]
+""2020-01-14 18:42:08 - loaded plugin [org.elasticsearch.percolator.PercolatorPlugin]
+""2020-01-14 18:42:08 - loaded plugin [org.elasticsearch.script.mustache.MustachePlugin]
+""2020-01-14 18:42:08 - loaded plugin [org.elasticsearch.transport.Netty4Plugin]
+""2020-01-14 18:42:09 - Adding transport node : 127.0.0.1:9200
+""2020-01-14 18:42:41 - Context refreshed
+""2020-01-14 18:42:41 - Found 1 custom documentation plugin(s)
+""2020-01-14 18:42:41 - Scanning for api listing references
+""2020-01-14 18:42:41 - Generating unique operation named: getAllNotesUsingGET_1
+""2020-01-14 18:42:41 - Generating unique operation named: trashUsingPUT_1
+""2020-01-14 18:42:42 - Attempting to connect to: [localhost:5672]
+""2020-01-14 18:42:42 - Created new connection: rabbitConnectionFactory#650eacad:0/SimpleConnection@7f493465 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 37102]
+""2020-01-14 18:42:42 - Tomcat started on port(s): 8080 (http) with context path ''
+""2020-01-14 18:42:42 - Started FundoonotesApplication in 55.062 seconds (JVM running for 57.145)
+""2020-01-14 18:42:52 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2020-01-14 18:42:52 - Initializing Servlet 'dispatcherServlet'
+""2020-01-14 18:42:52 - Completed initialization in 26 ms
+""2020-01-14 18:43:28 - idForRedis is :1
+""2020-01-14 18:43:28 - Id is :1 ,Description :string
+""2020-01-14 18:43:28 - request [PUT http://localhost:9200/bridgelabz/note/8?timeout=1m] returned 1 warnings: [299 Elasticsearch-7.5.1-3ae9ac9a93c95bd0cdc054951cf95d88e1e18d96 "[types removal] Specifying types in document index requests is deprecated, use the typeless endpoints instead (/{index}/_doc/{id}, /{index}/_doc, or /{index}/_create/{id})."]
+""2020-01-14 18:43:28 - bridgelabz
+""2020-01-14 18:43:28 - CREATED
 "
