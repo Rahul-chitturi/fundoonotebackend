@@ -22,6 +22,8 @@ import com.bridgelabz.fundoonotes.model.Collaborator;
 import com.bridgelabz.fundoonotes.response.Response;
 import com.bridgelabz.fundoonotes.service.CollaboratorService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/collaborate")
 public class CollaboratorController {
@@ -31,6 +33,7 @@ public class CollaboratorController {
 
 
 	@PostMapping("/addcollaborator/{id}")
+	@ApiOperation(value = "Api to add collaborator to note for Fundoonotes", response = Response.class)
 	public ResponseEntity<Response> addCollaborator(@Valid  @RequestBody CollaboratorDto collaboratorDto,@PathVariable("id") long noteId ,@RequestHeader("token") String token  , BindingResult bindingResult) {
    
 		if(bindingResult.hasErrors()) {
@@ -44,6 +47,7 @@ public class CollaboratorController {
 	}
 	
 	@DeleteMapping("/deletecollaborator/{id}")
+	@ApiOperation(value = "Api to remove collaborator for Fundoonotes", response = Response.class)
 	public ResponseEntity<Response> deleteCollaborator(@PathVariable(value = "id") Long noteId ,@RequestHeader("token") String token , @RequestHeader("collaboratorId") Long cId ) {
  int i =    collaboratorService.deleteCollaborator(cId , token , noteId);
 		return  i==1? ResponseEntity.status(HttpStatus.CREATED)
@@ -51,6 +55,7 @@ public class CollaboratorController {
 	}
 	
 	@GetMapping("/getallnotecollaborats/{id}")
+	@ApiOperation(value = "Api to show a collaborators for Fundoonotes", response = Response.class)
 	public ResponseEntity<Response> getAllCollaborator(@PathVariable(value = "id") Long noteId ,@RequestHeader("token") String token  ) {
  List<Collaborator> collList =   collaboratorService.getAllNoteCollaborators(token , noteId);
 		return collList!= null? ResponseEntity.status(HttpStatus.CREATED)

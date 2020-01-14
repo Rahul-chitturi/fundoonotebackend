@@ -1,4 +1,5 @@
 package com.bridgelabz.fundoonotes.utility;
+
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -15,24 +16,23 @@ import org.springframework.stereotype.Component;
 
 import com.bridgelabz.fundoonotes.response.MailObject;
 
-
-
 @Component
 public class MailServiceProvider {
 
 	/*
 	 * @Autowired private static JavaMailSender javaMailSender;
 	 */
-    @Value("${email}")
-	private static String email;
-	
-    @Value("${EmailPassword}")
-    private static String password;
-    
+
+	@Value("${email}")
+	private String email;
+
+	@Value("${EmailPassword}")
+	private String password;
+
 	public static void sendEmail(String toEmail, String subject, String body) {
 
-		String fromEmail = "rahulchitturi520@gmail.com";//Enter your email id
-		String password = "RAVishru@143"; //password
+		String fromEmail = System.getenv("email");// Enter your email id
+		String password = System.getenv("EmailPassword"); // password
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", "true");
@@ -64,11 +64,11 @@ public class MailServiceProvider {
 
 		}
 	}
-	
+
 	@RabbitListener(queues = "rmq.rube.queue")
 	public void recievedMessage(MailObject user) {
-	
-		sendEmail(user.getEmail(),user.getSubject(),user.getMessage());
-		System.out.println("Recieved Message From RabbitMQ: " + user);
+
+		sendEmail(user.getEmail(), user.getSubject(), user.getMessage());
+		System.out.println("Recieved Message From RabbitMQ: " + user.getEmail());
 	}
 }

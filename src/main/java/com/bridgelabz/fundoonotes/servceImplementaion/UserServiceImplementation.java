@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.configaration.RabbitMQSender;
 import com.bridgelabz.fundoonotes.dto.LoginDetails;
@@ -15,11 +16,10 @@ import com.bridgelabz.fundoonotes.repository.UserRepository;
 import com.bridgelabz.fundoonotes.response.MailObject;
 import com.bridgelabz.fundoonotes.service.UserService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
-import com.bridgelabz.fundoonotes.utility.SpringEmail;
 
 import lombok.extern.slf4j.Slf4j;
 
-@org.springframework.stereotype.Service
+@Service
 @Slf4j
 public class UserServiceImplementation implements UserService {
 	/**
@@ -29,9 +29,6 @@ public class UserServiceImplementation implements UserService {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@Autowired
-	private SpringEmail mail;
-
-	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -39,6 +36,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Autowired
 	private RabbitMQSender rabbitMQSender;
+
 	@Override
 	public User registration(UserDto user) {
 
@@ -93,8 +91,13 @@ public class UserServiceImplementation implements UserService {
 					User userDetailtosendMail = userRepository.findByEmailAddress(loginDetails.getEmail());
 					String response = "http://localhost:8080/users/verify/"
 							+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
-
-					mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
+					MailObject mailObject = new MailObject();
+					mailObject.setEmail(userDetailtosendMail.getEmail());
+					mailObject.setMessage(response);
+					mailObject.setSubject(" user verification");
+					rabbitMQSender.send(mailObject);
+					
+					//mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				}
 				return null;
 			}
@@ -155,8 +158,13 @@ public class UserServiceImplementation implements UserService {
 		if (isIdAvailable != null && isIdAvailable.isIs_email_verified() == true) {
 			String response = "http://localhost:8080/users/updatepassword/"
 					+ tokenGenerator.jwtToken(isIdAvailable.getId());
-
-			mail.sendForgetPasswordEmail(isIdAvailable.getEmail(), response);
+			MailObject mailObject = new MailObject();
+			mailObject.setEmail(isIdAvailable.getEmail());
+			mailObject.setMessage(response);
+			mailObject.setSubject("forget password");
+			rabbitMQSender.send(mailObject);
+			
+			//mail.sendForgetPasswordEmail(isIdAvailable.getEmail(), response);
 			return isIdAvailable;
 		}
 		return null;
