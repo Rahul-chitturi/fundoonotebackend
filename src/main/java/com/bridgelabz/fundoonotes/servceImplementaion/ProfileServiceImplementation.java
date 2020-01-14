@@ -67,7 +67,6 @@ public class ProfileServiceImplementation implements ProfileService {
 
 	}
 
-
 	public S3Object fetchObject(String awsFileName) {
 		S3Object s3Object;
 		try {
@@ -111,14 +110,14 @@ public class ProfileServiceImplementation implements ProfileService {
 			Long userId = getRedisCecheId(token);
 			User user = userRepository.findoneById(userId);
 			Profile profile = profilePicRepository.findByUserId(userId);
-			if (user != null && profile !=null) {
+			if (user != null && profile != null) {
 
 				deleteObject(profile.getProfilePicName());
 				profilePicRepository.delete(profile);
 				ObjectMetadata objectMetadata = new ObjectMetadata();
 				objectMetadata.setContentType(contentType);
 				objectMetadata.setContentLength(file.getSize());
-               
+
 				amazonS3Client.putObject(bucketName, originalFilename, file.getInputStream(), objectMetadata);
 				profilePicRepository.save(profile);
 				return profile;
@@ -132,19 +131,22 @@ public class ProfileServiceImplementation implements ProfileService {
 
 	@Override
 	public S3Object getProfilePic(String token) {
-		
+
 		try {
 			Long userId = getRedisCecheId(token);
 			User user = userRepository.findoneById(userId);
 			if (user != null) {
 				Profile profile = profilePicRepository.findByUserId(userId);
-               
-		return 	fetchObject(profile.getProfilePicName());
+				if (profile != null) {
+					return fetchObject(profile.getProfilePicName());
+				} else {
+					return null;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 }

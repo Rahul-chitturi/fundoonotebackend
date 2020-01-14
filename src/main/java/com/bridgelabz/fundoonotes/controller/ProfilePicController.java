@@ -50,6 +50,7 @@ public class ProfilePicController {
 	public ResponseEntity<Response> getProfilePic(@RequestHeader("token") String token){
 	
 	S3Object s3 = 	profileService.getProfilePic(token);
-		return ResponseEntity.status(HttpStatus.OK).body(new Response("profile added succussefully", 200, s3));
+		return s3!=null ?  ResponseEntity.status(HttpStatus.OK).body(new Response("profile added succussefully", 200, s3))
+				: ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("no profile pic ", 400));
 	}
 }
