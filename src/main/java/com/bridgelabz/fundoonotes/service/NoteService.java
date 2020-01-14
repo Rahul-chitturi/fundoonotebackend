@@ -9,7 +9,7 @@ import com.bridgelabz.fundoonotes.model.Note;
 
 public interface NoteService {
 
-	boolean computeSave(NoteDto noteDto, String token);
+
 
 	boolean deleteOneNote(long id, String token);
 
@@ -30,5 +30,9 @@ public interface NoteService {
 	List<Label> getAllLabelsOfOneNote(String token, long noteId);
 
 	List<Note> getAllNotesInSort(String token, String sortBy, String order);
+
+	boolean createNote(NoteDto noteDto, String token);
+
+	List<Note> searchByTitle(String title);
 
 }

@@ -58,6 +58,11 @@ public interface LabelRepository extends CrudRepository<Label, Long>{
 
 	@Query(nativeQuery = true , name = "name" )
 	List<Note> findListOfNoteOfLabel(long labelId);
+
+	@Modifying
+	@Transactional
+	@Query(value = "delete from label_note where note_id = ?" , nativeQuery =  true)
+	void removeNoteFromLabel(long noteId);
 	
 	
 }

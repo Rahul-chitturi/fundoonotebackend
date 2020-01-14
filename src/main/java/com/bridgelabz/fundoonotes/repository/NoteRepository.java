@@ -18,7 +18,7 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	@Modifying
 	@Transactional
 	@Query(value = "insert into note (contant, created_at,  title, updated_at, user_id) values ( ?, ?, ?, ?, ?)" , nativeQuery = true)
-	void insertData(String contant ,  Date createdAt  , String name , Date updatedAt , long id);
+	int insertData(String contant ,  Date createdAt  , String name , Date updatedAt , long id);
 	
 	@Modifying
 	@Transactional
@@ -81,4 +81,7 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
 	
 	@Query(value = "select * from note where user_id = ? order by updated_at ", nativeQuery = true)
 	List<Note> findAllInbyDate(Long userId); 
+	
+	@Query(value = "select * from note where title = ?", nativeQuery = true)
+	Note findbytitle(String title);
 }

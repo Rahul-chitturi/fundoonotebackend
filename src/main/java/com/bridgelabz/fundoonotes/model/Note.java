@@ -18,6 +18,7 @@ import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedNativeQuery;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,6 +26,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Document(indexName = "elasticsearch" , type = "model" , shards = 2)
 @Entity
 @Table(name = "note")
 @NoArgsConstructor
@@ -69,6 +71,7 @@ public class Note {
 	@JoinColumn(name = "userId")
 	private User userNote;
 
+	
 	@Column(columnDefinition = "varchar(10) default 'ffffff'")
 	private String noteColor;
 

@@ -39,7 +39,7 @@ public class NoteController {
 	@ApiOperation(value = "Api to Create Note for User in fundoonotes", response = Response.class)
 	private ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token) {
 
-		boolean result = noteService.computeSave(noteDto, token);
+		boolean result = noteService.createNote(noteDto, token);
 		if (result) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("Note is created successfully", 200));
 		} else {
@@ -162,6 +162,15 @@ public class NoteController {
 		List<Note> LabelList = noteService.getAllNotesInSort(token , sortBy , order);
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(new Response("all notes of user sort by "+sortBy + " Order in " + order, 200, LabelList));
+	}
+	
+	
+	@GetMapping("/note/search")
+	public ResponseEntity<Response> search(@RequestParam("title") String title,
+			 @RequestHeader("token") String token) {
+		     List<Note> notes=noteService.searchByTitle(title);
+		return ResponseEntity.status(HttpStatus.OK).body(new Response("The note you are looking for is", 200, notes));
+
 	}
 	
 }

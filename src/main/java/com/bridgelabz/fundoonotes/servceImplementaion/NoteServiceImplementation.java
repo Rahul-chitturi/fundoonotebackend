@@ -14,8 +14,10 @@ import com.bridgelabz.fundoonotes.dto.ReminderDto;
 import com.bridgelabz.fundoonotes.model.Label;
 import com.bridgelabz.fundoonotes.model.Note;
 import com.bridgelabz.fundoonotes.model.User;
+import com.bridgelabz.fundoonotes.repository.LabelRepository;
 import com.bridgelabz.fundoonotes.repository.NoteRepository;
 import com.bridgelabz.fundoonotes.repository.UserRepository;
+import com.bridgelabz.fundoonotes.service.ElasticSearchService;
 import com.bridgelabz.fundoonotes.service.NoteService;
 import com.bridgelabz.fundoonotes.utility.JwtGenerator;
 
@@ -39,8 +41,14 @@ public class NoteServiceImplementation implements NoteService {
 	@Autowired
 	private RedisTemplate<String, Object> redis;
 
+	@Autowired
+	private ElasticSearchService elasticService;
+	
+	@Autowired
+	private LabelRepository labelRepository; 
+
 	@Override
-	public boolean computeSave(NoteDto noteDto, String token) {
+	public boolean createNote(NoteDto noteDto, String token) {
 		try {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + " ,Description :" + noteDto.getNoteContant());
@@ -49,9 +57,16 @@ public class NoteServiceImplementation implements NoteService {
 				Note note = new Note(noteDto.getNoteTitle(), noteDto.getNoteContant());
 				note.setUserNote(user);
 				note.setCreatedAt();
-				noteRepository.insertData(note.getContant(), note.getCreatedAt(), note.getTitle(), note.getUpdatedAt(),
-						note.getUserNote().getId());
-				return true;
+				note.setNoteColor("ffffff");
+				Note result = noteRepository.save(note);// insertData(note.getContant(), note.getCreatedAt(),
+														// note.getTitle(), note.getUpdatedAt(),
+				// note.getUserNote().getId());
+				if (result != null) {
+					// note = noteRepository.findbytitle(note.getTitle());
+					log.info(elasticService.createNote(result));
+					return true;
+				}
+				return false;
 			}
 			return false;
 
@@ -69,6 +84,7 @@ public class NoteServiceImplementation implements NoteService {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + "note ID is: " + noteId);
 			noteRepository.updateColor(color, userId, noteId);
+			elasticService.updateNote(noteId);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,10 +102,12 @@ public class NoteServiceImplementation implements NoteService {
 			LOGGER.info("name : " + note.getId());
 			if (note.isArchived()) {
 				noteRepository.setArchive(false, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 1;
 			} else if (!note.isArchived()) {
 				noteRepository.setPinned(false, userId, noteId);
 				noteRepository.setArchive(true, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 0;
 			} else {
 				return -1;
@@ -109,10 +127,12 @@ public class NoteServiceImplementation implements NoteService {
 			Note note = noteRepository.checkById(noteId);
 			if (note.isPinned()) {
 				noteRepository.setPinned(false, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 1;
 			} else if (!note.isPinned()) {
 				noteRepository.setArchive(false, userId, noteId);
 				noteRepository.setPinned(true, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 0;
 			} else {
 				return -1;
@@ -130,7 +150,9 @@ public class NoteServiceImplementation implements NoteService {
 			Long userId = getRedisCecheId(token);
 			log.info("Id is :" + userId + "note ID is: " + noteId);
 			Note note = noteRepository.checkById(noteId);
-			if (note.isDeleted()) {
+			if (note != null && note.isDeleted()) {
+				labelRepository.removeNoteFromLabel( noteId);
+				elasticService.deleteNote(noteId);
 				noteRepository.deleteForever(userId, noteId);
 				return true;
 			}
@@ -150,10 +172,12 @@ public class NoteServiceImplementation implements NoteService {
 			if (note.isDeleted()) {
 				noteRepository.setPinned(false, userId, noteId);
 				noteRepository.setDelete(false, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 1;
 			} else if (!note.isDeleted()) {
 				noteRepository.setPinned(false, userId, noteId);
 				noteRepository.setDelete(true, userId, noteId);
+				elasticService.updateNote(noteId);
 				return 0;
 			} else {
 				return -1;
@@ -177,6 +201,7 @@ public class NoteServiceImplementation implements NoteService {
 				note.setTitle(noteDto.getNoteTitle());
 				note.setUpdatedAt();
 				noteRepository.updateData(note.getContant(), note.getTitle(), note.getUpdatedAt(), id, noteId);
+				elasticService.updateNote(noteId);
 				return true;
 			}
 			return false;
@@ -203,6 +228,7 @@ public class NoteServiceImplementation implements NoteService {
 				note.setUpdatedAt();
 				noteRepository.reminder(note.getLocalReminderStatus(), note.getLocalReminder(), note.getUpdatedAt(), id,
 						noteId);
+				elasticService.updateNote(noteId);
 				return true;
 			}
 			return false;
@@ -224,15 +250,13 @@ public class NoteServiceImplementation implements NoteService {
 		return userId;
 	}
 
-
-
 	@Override
 	public List<Note> getAllNotes(String token) {
 		Long userId = getRedisCecheId(token);
 		User isUserAvailable = userRepository.findoneById(userId);
 		if (isUserAvailable != null) {
-		List<Note> notes=  noteRepository.findAll(userId);
-		return notes;
+			List<Note> notes = noteRepository.findAll(userId);
+			return notes;
 		}
 		return null;
 	}
@@ -243,9 +267,9 @@ public class NoteServiceImplementation implements NoteService {
 		User isUserAvailable = userRepository.findoneById(userId);
 		if (isUserAvailable != null) {
 			Note note = noteRepository.checkById(noteId);
-			if(note!=null) {
+			if (note != null) {
 				List<Label> labels = noteRepository.getLabelByNoteId(noteId);
-			return labels;
+				return labels;
 			}
 		}
 		return null;
@@ -253,26 +277,37 @@ public class NoteServiceImplementation implements NoteService {
 
 	@Override
 	public List<Note> getAllNotesInSort(String token, String sortBy, String order) {
-          if(sortBy.equals("name")&& order.equals("asc")) {
-        	 return getAllNotes(token);  
-          }
+		if (sortBy.equals("name") && order.equals("asc")) {
+			return getAllNotes(token);
+		}
 		Long userId = getRedisCecheId(token);
 		User isUserAvailable = userRepository.findoneById(userId);
 		if (isUserAvailable != null) {
-			if(sortBy.equals("name") && order.equals("desc")) {
-				List<Note> notes=  noteRepository.findAllInDesc(userId);
-				return notes;	
-			}else if(sortBy.equals("date") && order.equals("desc")) {
-				List<Note> notes=  noteRepository.findAllInDescbyDate(userId);
-				return notes;			
-			}else if(sortBy.equals("date") && order.equals("asc")) {
-				List<Note> notes=  noteRepository.findAllInbyDate(userId);
-				return notes;	
-			}else {
-	        	 return getAllNotes(token); 
+			if (sortBy.equals("name") && order.equals("desc")) {
+				List<Note> notes = noteRepository.findAllInDesc(userId);
+				return notes;
+			} else if (sortBy.equals("date") && order.equals("desc")) {
+				List<Note> notes = noteRepository.findAllInDescbyDate(userId);
+				return notes;
+			} else if (sortBy.equals("date") && order.equals("asc")) {
+				List<Note> notes = noteRepository.findAllInbyDate(userId);
+				return notes;
+			} else {
+				return getAllNotes(token);
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public List<Note> searchByTitle(String title) {
+		List<Note> notes=elasticService.searchbytitle(title);
+		if(notes!=null) {
+		return notes;
+		}
+		else {
+			return null;
+		}
 	}
 
 }
