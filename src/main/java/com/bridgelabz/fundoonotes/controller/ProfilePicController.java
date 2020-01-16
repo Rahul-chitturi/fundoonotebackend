@@ -41,7 +41,7 @@ public class ProfilePicController {
 		Profile profile = profileService.updateObejctInS3(file, file.getOriginalFilename(), file.getContentType(),
 				token);
 		return profile.getUserLabel() != null
-				? ResponseEntity.status(HttpStatus.OK).body(new Response("profile added succussefully", 200, profile))
+				? ResponseEntity.status(HttpStatus.OK).body(new Response("profile updated succussefully", 200, profile))
 				: ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("something went Wrong ", 400));
 	}
 	

@@ -103,7 +103,7 @@ public class LabelController {
 
 	@GetMapping("/getAlllabels")
 	@ApiOperation(value = "Api to get all the labels related to user for Fundoonotes", response = Response.class)
-	public ResponseEntity<Response> getAllLabels(@RequestHeader("token") String token) throws Exception {
+	public ResponseEntity<Response> getAllLabels(@RequestHeader("token") String token)  {
 		List<Label> labelList = labelService.getAllLabels(token);
 		return labelList!=null? ResponseEntity.status(HttpStatus.OK).body(new Response("Label List are", 200, labelList))
 				: ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("not able to get the list", 400));
@@ -112,7 +112,7 @@ public class LabelController {
 	
 	@GetMapping("labels/getNotes")
 	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token,
-			@RequestParam("labelId") long labelId) throws Exception {
+			@RequestParam("labelId") long labelId)  {
 		List<Note> noteList = labelService.getAllNotes(token, labelId);
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(new Response("Notes releated to current labelId are", 200, noteList));
