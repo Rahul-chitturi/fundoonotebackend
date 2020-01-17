@@ -25,8 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LabelServiceImplementation implements LabelService {
 
-	@Autowired
-	private JwtGenerator jwtGenerator;
+
 
 	@Autowired
 	private UserRepository userRepository;
@@ -42,7 +41,7 @@ public class LabelServiceImplementation implements LabelService {
 
 	@Override
 	public Label createlabel(LabelDto labelDto, String token) {
-		long userId = jwtGenerator.parseJWT(token);
+		long userId = JwtGenerator.decodeJWT(token);
 		User isUserAvailable = userRepository.findoneById(userId);
 		if (isUserAvailable != null) {
 			String labelName = labelDto.getName();
@@ -64,7 +63,7 @@ public class LabelServiceImplementation implements LabelService {
 	@Override
 	public Label createOrMapWithNote(LabelDto labelDto, Long noteId, String token) {
 
-		Long userId = jwtGenerator.parseJWT(token);
+		Long userId = JwtGenerator.decodeJWT(token);
 		User isUserAvailable = userRepository.findoneById(userId);
 		Note noteInfo = noterepository.checkById(noteId);
 		if (isUserAvailable != null) {
@@ -100,7 +99,7 @@ public class LabelServiceImplementation implements LabelService {
 
 	@Override
 	public Label removeLabels(String token, Long noteId, Long labelId) {
-		Long userId = jwtGenerator.parseJWT(token);
+		Long userId = JwtGenerator.decodeJWT(token);
 		Note isNoteAvailable = noterepository.checkById(noteId);
 		if (isNoteAvailable != null) {
 			Label isLabelAvailable = labelRepository.findoneById(labelId, userId);
@@ -196,7 +195,7 @@ public class LabelServiceImplementation implements LabelService {
 		String[] splitedToken = token.split("\\.");
 		String redisTokenKey = splitedToken[1] + splitedToken[2];
 		if (redis.opsForValue().get(redisTokenKey) == null) {
-			Long idForRedis = jwtGenerator.parseJWT(token);
+			Long idForRedis = JwtGenerator.decodeJWT(token);
 			log.info("idForRedis is :" + idForRedis);
 			redis.opsForValue().set(redisTokenKey, idForRedis, 3 * 60, TimeUnit.SECONDS);
 		}

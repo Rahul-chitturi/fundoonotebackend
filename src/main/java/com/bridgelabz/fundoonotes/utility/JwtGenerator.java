@@ -1,43 +1,63 @@
 package com.bridgelabz.fundoonotes.utility;
-import java.io.UnsupportedEncodingException;
 
-import org.springframework.stereotype.Component;
+import java.security.Key;
+import java.util.Date;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTCreationException;
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
-@Component
 public class JwtGenerator {
 
-	private static final String SECRET = "112223333";
-	
-	public String jwtToken(long l) {
-		String token = null;
-		try {
-			token = JWT.create().withClaim("id", l).sign(Algorithm.HMAC512(SECRET));
-		} catch (IllegalArgumentException | JWTCreationException | UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return token;
+	private JwtGenerator() {
+		
 	}
+    // The secret key. This should be in a property file NOT under source
+    // control and not hard coded in real life. We're putting it here for
+    // simplicity.
+    private static final String SECRET_KEY = "oeRaYY7Wo24sDqKSX3IM9ASGmdGPmkTd9jo1QTy4b7P9Ze5_9hKolVX8xNrQDcNRfVEdTZNOuOyqEGhXEbdJI-ZQ19k_o9MI0y3eZN2lp9jow55FfXMiINEdt1XR85VipRLSOkT6kSpzs2x-jbLDiz9iFVzkd81YKxMgPA7VfZeQUm4n-mOmnWMaVX30zGFU4L3oPBctYKkl4dYfqYWqRNfrgPJVi5DGFjywgxx0ASEiJHtV72paI3fDR2XwlSkyhhmY-ICjCRmsJN4fX1pdoL8a18-aQrvyu4j0Os6dVPYIoPvvY0SAZtWYKHfM15g7A3HD4cVREf9cUsprCRK93w";
 
-	/*
-	 * method to parse the jwt token into integer
-	 * */
-	public long parseJWT(String jwt)
-	{
-		try {
-		Long userId = (long) 0;
-		if (jwt != null) {
-			userId = JWT.require(Algorithm.HMAC512(SECRET)).build().verify(jwt).getClaim("id").asLong();
-		}
-		return userId;
-	}catch (Exception e) {
-	e.printStackTrace();
-	}
-		return 0;
+    //Sample method to construct a JWT
+    public static String createJWT(Long id, long ttlMillis) {
+    	 String issuer = "Bridgelabz";
+    	 String subject = "Authenication";
+        //The JWT signature algorithm we will be using to sign the token
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
-	}
+        long nowMillis = System.currentTimeMillis();
+        Date now = new Date(nowMillis);
+
+        //We will sign our JWT with our ApiKey secret
+        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SECRET_KEY);
+        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+
+        //Let's set the JWT Claims
+        JwtBuilder builder = Jwts.builder().setId(String.valueOf(id))
+                .setIssuedAt(now)
+                .setSubject(subject)
+                .setIssuer(issuer)
+                .signWith(signatureAlgorithm, signingKey);
+
+        //if it has been specified, let's add the expiration
+        if (ttlMillis >= 0) {
+            long expMillis = nowMillis + ttlMillis;
+            Date exp = new Date(expMillis);
+            builder.setExpiration(exp);
+        }
+
+        //Builds the JWT and serializes it to a compact, URL-safe string
+        return builder.compact();
+    }
+
+    public static Long decodeJWT(String jwt) {
+        //This line will throw an exception if it is not a signed JWS (as expected)
+    	 return  Long.parseLong(Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(SECRET_KEY))
+                .parseClaimsJws(jwt).getBody().getId());
+       
+    }
+
 }

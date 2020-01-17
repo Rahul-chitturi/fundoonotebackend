@@ -31,8 +31,6 @@ public class ProfileServiceImplementation implements ProfileService {
 	@Autowired
 	private ProfilePicRepository profilePicRepository;
 
-	@Autowired
-	private JwtGenerator tokenGenerator;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -72,11 +70,11 @@ public class ProfileServiceImplementation implements ProfileService {
 		try {
 			s3Object = amazonS3Client.getObject(new GetObjectRequest(bucketName, awsFileName));
 		} catch (AmazonServiceException serviceException) {
-			serviceException.printStackTrace();
+
 
 			throw new RuntimeException("Error while streaming File.");
 		} catch (AmazonClientException exception) {
-			exception.printStackTrace();
+
 			throw new RuntimeException("Error while streaming File.");
 		}
 		return s3Object;
@@ -96,7 +94,7 @@ public class ProfileServiceImplementation implements ProfileService {
 		String[] splitedToken = token.split("\\.");
 		String redisTokenKey = splitedToken[1] + splitedToken[2];
 		if (redis.opsForValue().get(redisTokenKey) == null) {
-			Long idForRedis = tokenGenerator.parseJWT(token);
+			Long idForRedis =JwtGenerator.decodeJWT(token);
 			log.info("idForRedis is :" + idForRedis);
 			redis.opsForValue().set(redisTokenKey, idForRedis, 2 * 60, TimeUnit.SECONDS);
 		}

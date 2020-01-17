@@ -37,33 +37,33 @@ public class NoteController {
 	 */
 	@PostMapping("/create")
 	@ApiOperation(value = "Api to Create Note for User in fundoonotes", response = Response.class)
-	private ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token) {
+	public ResponseEntity<Response> createNote(@RequestBody NoteDto noteDto, @RequestHeader("token") String token) {
 
 		boolean result = noteService.createNote(noteDto, token);
 		if (result) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("Note is created successfully", 200));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong while creataing note", 400));
 		}
 	}
 
 	@PutMapping("/color/{id}")
 	@ApiOperation(value = "Api to Create Note for User In fundoonotes", response = Response.class)
-	private ResponseEntity<Response> color(@PathVariable("id") long noteId, @RequestParam String color,
+	public ResponseEntity<Response> color(@PathVariable("id") long noteId, @RequestParam String color,
 			@RequestHeader("token") String token) {
 
 		boolean result = noteService.color(color, token, noteId);
 		if (result) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("Color changed succussfully", 200));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong while chanaging note", 400));
 		}
 
 	}
 
 	@PutMapping("/archive/{id}")
 	@ApiOperation(value = "Api to Archive Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> archive(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
+	public ResponseEntity<Response> archive(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 
 		int result = noteService.archive(token, noteId);
 		if (result == 1) {
@@ -71,40 +71,40 @@ public class NoteController {
 		} else if (result == 0) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully Archived", 200));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong while archiving", 400));
 		}
 	}
 
 	@PutMapping("/pinned/{id}")
 	@ApiOperation(value = "Api to pin and unpin Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> pinned(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
+	public ResponseEntity<Response> pinned(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 		int result = noteService.pinned(token, noteId);
 		if (result == 1) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully unPinned", 200));
 		} else if (result == 0) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully Pinned", 200));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong while pinning", 400));
 		}
 	}
 
 	@PutMapping(value = { "/trash/{id}", "/restore/{id}" })
 	@ApiOperation(value = "Api to delete  Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> trash(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
+	public ResponseEntity<Response> trash(@PathVariable("id") long noteId, @RequestHeader("token") String token) {
 		int result = noteService.delete(token, noteId);
 		if (result == 1) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully restored", 200));
 		} else if (result == 0) {
 			return ResponseEntity.status(HttpStatus.OK).body(new Response("succussfully moved to trash ", 200));
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong", 400));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Something went wrong while trashing", 400));
 		}
 	}
 
 	@DeleteMapping("/deleteforever/{id}")
 	@ApiOperation(value = "Api to deleteNote forever Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> deleteOneNote(@PathVariable("id") long id, @RequestHeader("token") String token)
-			throws Exception {
+	public ResponseEntity<Response> deleteOneNote(@PathVariable("id") long id, @RequestHeader("token") String token)
+			{
 
 		boolean result = noteService.deleteOneNote(id, token);
 		if (result) {
@@ -118,8 +118,8 @@ public class NoteController {
 
 	@PostMapping("/updatenote/{id}")
 	@ApiOperation(value = "Api to update Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> updateNote(@PathVariable("id") long noteId, @RequestBody NoteDto noteDto,
-			@RequestHeader("token") String token) throws Exception {
+	public ResponseEntity<Response> updateNote(@PathVariable("id") long noteId, @RequestBody NoteDto noteDto,
+			@RequestHeader("token") String token)  {
 
 		boolean result = noteService.updateNote(noteDto, token, noteId);
 		if (result) {
@@ -131,8 +131,8 @@ public class NoteController {
 
 	@PostMapping("/reminder/{id}")
 	@ApiOperation(value = "Api to add Reminder Note for fundoonotes", response = Response.class)
-	private ResponseEntity<Response> reminder(@PathVariable("id") long noteId, @RequestBody ReminderDto reminderDto,
-			@RequestHeader("token") String token) throws Exception {
+	public ResponseEntity<Response> reminder(@PathVariable("id") long noteId, @RequestBody ReminderDto reminderDto,
+			@RequestHeader("token") String token)  {
 
 		boolean result = noteService.reminder(reminderDto, token, noteId);
 		if (result) {
@@ -144,14 +144,14 @@ public class NoteController {
 	
 	@GetMapping("/getnotes")
 	public ResponseEntity<Response> getAllNotes(@RequestHeader("token") String token)  {
-		List<Note> LabelList = noteService.getAllNotes(token);
+		List<Note> labelList = noteService.getAllNotes(token);
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(new Response("all notes of user", 200, LabelList));
+				.body(new Response("all notes of user", 200, labelList));
 	}
 	
 	@GetMapping("/getnotelabels")
 	public ResponseEntity<Response> getAllNoteLabels(@RequestHeader("token") String token,
-			@RequestParam("noteId") long noteId) throws Exception {
+			@RequestParam("noteId") long noteId) {
 		List<Label> noteList = noteService.getAllLabelsOfOneNote(token, noteId);
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(new Response("Labels releated to current Note are", 200, noteList));
@@ -159,9 +159,9 @@ public class NoteController {
 	
 	@GetMapping("/getnotes/{sort}/{order}")
 	public ResponseEntity<Response> getAllNotesInSort(@RequestHeader("token") String token , @PathVariable("sort") String sortBy , @PathVariable("order") String order)  {
-		List<Note> LabelList = noteService.getAllNotesInSort(token , sortBy , order);
+		List<Note> labelList = noteService.getAllNotesInSort(token , sortBy , order);
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(new Response("all notes of user sort by "+sortBy + " Order in " + order, 200, LabelList));
+				.body(new Response("all notes of user sort by "+sortBy + " Order in " + order, 200, labelList));
 	}
 	
 	

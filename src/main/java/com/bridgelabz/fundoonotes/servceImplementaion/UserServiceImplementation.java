@@ -31,8 +31,7 @@ public class UserServiceImplementation implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
-	private JwtGenerator tokenGenerator;
+
 
 	@Autowired
 	private RabbitMQSender rabbitMQSender;
@@ -53,20 +52,19 @@ public class UserServiceImplementation implements UserService {
 						userDetails.getLastName(), userDetails.getMobilenumber(), userDetails.getPassword());
 				User userDetailtosendMail = userRepository.findByEmailAddress(user.getEmail());
 				String response = "http://localhost:8080/users/verify/"
-						+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
+						+ JwtGenerator.createJWT(userDetailtosendMail.getId(), 300000);
 				MailObject mailObject = new MailObject();
 				mailObject.setEmail(userDetailtosendMail.getEmail());
 				mailObject.setMessage(response);
 				mailObject.setSubject(" user verification");
 				rabbitMQSender.send(mailObject);
-				//mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				userDetailtosendMail.setPassword("*****");
 				return userDetailtosendMail;
 			} else {
 				return checkEmailAvailability;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+
 			return null;
 		}
 	}
@@ -79,8 +77,8 @@ public class UserServiceImplementation implements UserService {
 			log.info("logining user details : " + userInfo.getEmail());
 			if (userInfo.getEmail().equals(loginDetails.getEmail())) {
 				if (userInfo.isIs_email_verified()) {
-					boolean is_password_matched = BCrypt.checkpw(loginDetails.getPassword(), userInfo.getPassword());
-					if (is_password_matched) {
+					boolean isPasswordMatched = BCrypt.checkpw(loginDetails.getPassword(), userInfo.getPassword());
+					if (isPasswordMatched) {
 						userRepository.updateLastLoginTime(new Date(), userInfo.getId());
 						userInfo.setPassword("****");
 						return userInfo;
@@ -90,14 +88,13 @@ public class UserServiceImplementation implements UserService {
 				} else {
 					User userDetailtosendMail = userRepository.findByEmailAddress(loginDetails.getEmail());
 					String response = "http://localhost:8080/users/verify/"
-							+ tokenGenerator.jwtToken(userDetailtosendMail.getId());
+							+ JwtGenerator.createJWT(userDetailtosendMail.getId(), 300000);
 					MailObject mailObject = new MailObject();
 					mailObject.setEmail(userDetailtosendMail.getEmail());
 					mailObject.setMessage(response);
 					mailObject.setSubject(" user verification");
 					rabbitMQSender.send(mailObject);
 					
-					//mail.sendVerificationEmail(userDetailtosendMail.getEmail(), response);
 				}
 				return null;
 			}
@@ -109,8 +106,8 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public User verify(String token) {
 		try {
-			log.info("id in verification" + (long) tokenGenerator.parseJWT(token));
-			Long id = tokenGenerator.parseJWT(token);
+		
+			Long id = JwtGenerator.decodeJWT(token);
 			User userInfo = userRepository.findoneById(id);
 			if (userInfo != null) {
 				if (!userInfo.isIs_email_verified()) {
@@ -133,7 +130,7 @@ public class UserServiceImplementation implements UserService {
 		try {
 
 			if (resetPassword.getPassword().equals(resetPassword.getConformPassword())) {
-				long id = tokenGenerator.parseJWT(token);
+				long id =  JwtGenerator.decodeJWT(token);
 				User isIdAvailable = userRepository.findoneById(id);
 				if (isIdAvailable != null) {
 					isIdAvailable.setPassword(passwordEncoder.encode((resetPassword.getPassword())));
@@ -147,7 +144,7 @@ public class UserServiceImplementation implements UserService {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+	
 			return null;
 		}
 	}
@@ -157,14 +154,13 @@ public class UserServiceImplementation implements UserService {
 		User isIdAvailable = userRepository.findByEmailAddress(email);
 		if (isIdAvailable != null && isIdAvailable.isIs_email_verified() == true) {
 			String response = "http://localhost:8080/users/updatepassword/"
-					+ tokenGenerator.jwtToken(isIdAvailable.getId());
+					+ JwtGenerator.createJWT(isIdAvailable.getId(), 300000);
 			MailObject mailObject = new MailObject();
 			mailObject.setEmail(isIdAvailable.getEmail());
 			mailObject.setMessage(response);
 			mailObject.setSubject("forget password");
 			rabbitMQSender.send(mailObject);
 			
-			//mail.sendForgetPasswordEmail(isIdAvailable.getEmail(), response);
 			return isIdAvailable;
 		}
 		return null;

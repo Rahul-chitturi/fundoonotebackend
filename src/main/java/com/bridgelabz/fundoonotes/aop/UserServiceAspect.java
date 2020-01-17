@@ -19,7 +19,7 @@ public class UserServiceAspect {
 
 	@Before(value = "execution(* com.bridgelabz.fundoonotes.servceImplementaion.UserServiceImplementation.*(..)) and args(user)")
 	public void beforeRegistration(JoinPoint joinPoint, UserDto user) {
-		log.info("Before method:" + joinPoint.getSignature());
+		log.info("Before method exc:" + joinPoint.getSignature());
 		log.info("Creating User registration name: " + user.getFirstName() + " " + user.getLastName());
 
 	}
@@ -45,7 +45,7 @@ public class UserServiceAspect {
 	}
 
 	@AfterThrowing(pointcut = "execution(* com.bridgelabz.fundoonotes.servceImplementaion.UserServiceImplementation.*(..))", throwing = "ex")
-	public void AfterThrowingAdvice(IllegalArgumentException ex) {
+	public void afterThrowingAdvice(IllegalArgumentException ex) {
 		log.info("There has been an exception: " + ex.toString());
 	}
 

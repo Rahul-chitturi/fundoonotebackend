@@ -7,6 +7,7 @@ package com.bridgelabz.fundoonotes.controller;
  * @version :1.0
  */
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.bridgelabz.fundoonotes.dto.LoginDetails;
 import com.bridgelabz.fundoonotes.dto.ResetPassword;
 import com.bridgelabz.fundoonotes.dto.UserDto;
@@ -36,8 +38,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private JwtGenerator tokenGenerator;
+
 
 	/**
 	 * api for user registration
@@ -48,7 +49,7 @@ public class UserController {
 	 */
 	@PostMapping(value = "/register")
 	@ApiOperation(value = "Api to Register User for Fundoonotes", response = Response.class)
-	private ResponseEntity<Response> registration(@Valid @RequestBody UserDto userDto, BindingResult bindingResult) {
+	public ResponseEntity<Response> registration(@Valid @RequestBody UserDto userDto, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -73,7 +74,7 @@ public class UserController {
 	 */
 	@PostMapping(value = "/login")
 	@ApiOperation(value = "Api to Login User for Fundoonotes", response = Response.class)
-	private ResponseEntity<UserAuthenticationResponse> login(@Valid @RequestBody LoginDetails loginDetails,
+	public ResponseEntity<UserAuthenticationResponse> login(@Valid @RequestBody LoginDetails loginDetails,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			loginDetails.setPassword("****");
@@ -84,7 +85,7 @@ public class UserController {
 		loginDetails.setPassword("*******");
 		return userInformation != null
 				? ResponseEntity.status(HttpStatus.OK)
-						.body(new UserAuthenticationResponse(tokenGenerator.jwtToken(userInformation.getId()), 200,
+						.body(new UserAuthenticationResponse(JwtGenerator.createJWT(userInformation.getId(), 900000), 200,
 								userInformation))
 				: ResponseEntity.status(HttpStatus.BAD_REQUEST)
 						.body(new UserAuthenticationResponse("Login failed", 400, loginDetails));
@@ -98,7 +99,7 @@ public class UserController {
 	 */
 	@PutMapping("/verify/{token}")
 	@ApiOperation(value = "Api to Verify User for Fundoonotes", response = Response.class)
-	private ResponseEntity<Response> userVerification(@PathVariable("token") String token) {
+	public ResponseEntity<Response> userVerification(@PathVariable("token") String token) {
 		User user = userService.verify(token);
 		return user != null ? ResponseEntity.status(HttpStatus.OK).body(new Response("verified", 200))
 				: ResponseEntity.status(HttpStatus.OK).body(new Response("not verified", 400));
@@ -114,7 +115,7 @@ public class UserController {
 	 */
 
 	@PostMapping("/resetpassword/{token}")
-	@ApiOperation(value = "Api to ResetPassword User for Fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to ResetPassword User for Fundoonotes", response = Response.class)
 	public ResponseEntity<Response> resetPassword(@PathVariable("token") String token,
 			@RequestBody ResetPassword resetPassword) {
 		User user = userService.resetPassword(token, resetPassword);
@@ -133,7 +134,7 @@ public class UserController {
 	 * @return response
 	 */
 	@PostMapping("/forgotpassword")
-	@ApiOperation(value = "Api to FoegetPassword User for Fundoonotes" , response = Response.class)
+	@ApiOperation(value = "Api to FoegetPassword User for Fundoonotes", response = Response.class)
 	public ResponseEntity<Response> forgotPassword(@RequestParam("email") String email) {
 
 		User user = userService.forgetPassword(email);

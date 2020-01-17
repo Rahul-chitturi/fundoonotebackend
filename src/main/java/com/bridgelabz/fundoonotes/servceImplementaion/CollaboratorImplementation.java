@@ -26,8 +26,6 @@ public class CollaboratorImplementation implements CollaboratorService {
 	@Autowired
 	private NoteRepository noteRepository;
 
-	@Autowired
-	private JwtGenerator tokenGenerator;
 
 	@Autowired
 	private CollaboratorRepository collaboratorRepository;
@@ -58,7 +56,7 @@ public class CollaboratorImplementation implements CollaboratorService {
 		String[] splitedToken = token.split("\\.");
 		String redisTokenKey = splitedToken[1] + splitedToken[2];
 		if (redis.opsForValue().get(redisTokenKey) == null) {
-			Long idForRedis = tokenGenerator.parseJWT(token);
+			Long idForRedis =JwtGenerator.decodeJWT(token);
 			log.info("idForRedis is :" + idForRedis);
 			redis.opsForValue().set(redisTokenKey, idForRedis, 2 * 60, TimeUnit.SECONDS);
 		}

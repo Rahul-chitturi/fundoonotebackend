@@ -3,8 +3,6 @@ package com.bridgelabz.fundoonotes.servceImplementaion;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -27,10 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class NoteServiceImplementation implements NoteService {
 
-	private final Logger LOGGER = LoggerFactory.getLogger(NoteServiceImplementation.class);
-
-	@Autowired
-	private JwtGenerator tokenGenerator;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -99,7 +93,7 @@ public class NoteServiceImplementation implements NoteService {
 		try {
 			Long userId = getRedisCecheId(token);
 			Note note = noteRepository.checkById(noteId);
-			LOGGER.info("name : " + note.getId());
+		
 			if (note.isArchived()) {
 				noteRepository.setArchive(false, userId, noteId);
 				elasticService.updateNote(noteId);
@@ -242,7 +236,7 @@ public class NoteServiceImplementation implements NoteService {
 		String[] splitedToken = token.split("\\.");
 		String redisTokenKey = splitedToken[1] + splitedToken[2];
 		if (redis.opsForValue().get(redisTokenKey) == null) {
-			Long idForRedis = tokenGenerator.parseJWT(token);
+			Long idForRedis =JwtGenerator.decodeJWT(token);
 			log.info("idForRedis is :" + idForRedis);
 			redis.opsForValue().set(redisTokenKey, idForRedis, 3 * 60, TimeUnit.SECONDS);
 		}

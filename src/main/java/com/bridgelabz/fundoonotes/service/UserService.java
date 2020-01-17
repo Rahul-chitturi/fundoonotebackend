@@ -10,7 +10,6 @@ import com.bridgelabz.fundoonotes.model.User;
 public interface UserService {
 
 	User registration(UserDto user);
-//	boolean findOneByEmail(String email);
 
 	User login(@Valid LoginDetails loginDetails);
 
