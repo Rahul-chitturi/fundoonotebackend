@@ -70,8 +70,6 @@ public class LabelServiceImplementation implements LabelService {
 			if (noteInfo != null) {
 				String labelName = labelDto.getName();
 				Label label = labelRepository.findOneByName(labelName);
-				// Label labelNote =
-				// labelRepository.findoneByLabelIdAndNoteId(label.getLableId(), noteId);
 				if (label == null) {
 					Label newLabel = new Label();
 					BeanUtils.copyProperties(labelDto, newLabel);
@@ -83,7 +81,6 @@ public class LabelServiceImplementation implements LabelService {
 					return labelCreate;
 				} else {
 					Object map = labelRepository.findoneByLabelIdAndNoteId(label.getLableId(), noteId);
-					// map.stream().forEach((result)->{System.out.println(result[0]);});
 					if (map == null) {
 						noterepository.insertDataToMap(noteId, label.getLableId());
 					}

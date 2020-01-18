@@ -1,5 +1,6 @@
 package com.bridgelabz.fundoonotes.servceImplementaion;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -152,7 +153,7 @@ public class NoteServiceImplementation implements NoteService {
 			}
 			return false;
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			return false;
 		}
 	}
@@ -177,7 +178,7 @@ public class NoteServiceImplementation implements NoteService {
 				return -1;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+
 			return -1;
 		}
 	}
@@ -201,7 +202,7 @@ public class NoteServiceImplementation implements NoteService {
 			return false;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+		
 			return false;
 		}
 
@@ -218,7 +219,7 @@ public class NoteServiceImplementation implements NoteService {
 				Note note = noteRepository.checkById(noteId);
 				note.setLocalReminderStatus(reminderDto.getLocalReminderStatus());
 				note.setLocalReminder(reminderDto.getLocalReminder());
-				System.out.println(note.getLocalReminder());
+
 				note.setUpdatedAt();
 				noteRepository.reminder(note.getLocalReminderStatus(), note.getLocalReminder(), note.getUpdatedAt(), id,
 						noteId);
@@ -227,7 +228,7 @@ public class NoteServiceImplementation implements NoteService {
 			}
 			return false;
 		} catch (Exception e) {
-			e.printStackTrace();
+
 			return false;
 		}
 	}
@@ -240,7 +241,7 @@ public class NoteServiceImplementation implements NoteService {
 			log.info("idForRedis is :" + idForRedis);
 			redis.opsForValue().set(redisTokenKey, idForRedis, 3 * 60, TimeUnit.SECONDS);
 		}
-		Long userId = (Long) redis.opsForValue().get(redisTokenKey);
+		Long userId =  (Long) redis.opsForValue().get(redisTokenKey);
 		return userId;
 	}
 
@@ -249,10 +250,10 @@ public class NoteServiceImplementation implements NoteService {
 		Long userId = getRedisCecheId(token);
 		User isUserAvailable = userRepository.findoneById(userId);
 		if (isUserAvailable != null) {
-			List<Note> notes = noteRepository.findAll(userId);
-			return notes;
+                    
+			return  noteRepository.findAll(userId);
 		}
-		return null;
+		return  null ;
 	}
 
 	@Override
@@ -262,8 +263,8 @@ public class NoteServiceImplementation implements NoteService {
 		if (isUserAvailable != null) {
 			Note note = noteRepository.checkById(noteId);
 			if (note != null) {
-				List<Label> labels = noteRepository.getLabelByNoteId(noteId);
-				return labels;
+				return	 noteRepository.getLabelByNoteId(noteId);
+			
 			}
 		}
 		return null;

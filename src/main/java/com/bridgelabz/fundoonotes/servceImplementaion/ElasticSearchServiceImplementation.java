@@ -44,9 +44,9 @@ public class ElasticSearchServiceImplementation implements ElasticSearchService 
 	@Autowired
 	private ObjectMapper objectmapper;
 
-	private String INDEX = "bridgelabz";
+	private static final  String INDEX = "bridgelabz";
 
-	private String TYPE = "note";
+	private static final String TYPE = "note";
 
 
 	@Override
@@ -56,11 +56,13 @@ public class ElasticSearchServiceImplementation implements ElasticSearchService 
 		IndexResponse indexResponse = null;
 		try {
 			indexResponse = config.client().index(indexrequest, RequestOptions.DEFAULT);
+			log.info(INDEX, indexResponse);
+			return indexResponse.getResult().name();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.warn(e.getMessage());
 		}
-		log.info(INDEX, indexResponse);
-		return indexResponse.getResult().name();
+		return null;
+	
 	}
 
 	@Override
@@ -73,7 +75,7 @@ public class ElasticSearchServiceImplementation implements ElasticSearchService 
 			updateResponse = config.client().update(updateRequest, RequestOptions.DEFAULT);
 	      log.info(updateResponse.getResult().name());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.warn(e.getMessage());
 		}
 	}
 
@@ -84,10 +86,11 @@ public class ElasticSearchServiceImplementation implements ElasticSearchService 
 		DeleteResponse deleteResponse = null;
 		try {
 			deleteResponse = config.client().delete(deleterequest, RequestOptions.DEFAULT);
+			return deleteResponse.getResult().name();
 		} catch (IOException e) {
-			e.printStackTrace();
+		log.warn(e.getMessage());
 		}
-		return deleteResponse.getResult().name();
+		return null;
 	}
 	
 	@Override
@@ -99,10 +102,13 @@ public class ElasticSearchServiceImplementation implements ElasticSearchService 
 		SearchResponse searchresponse = null;
 		try {
 			searchresponse = config.client().search(searchrequest, RequestOptions.DEFAULT);
+			return getResult(searchresponse);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
-		return getResult(searchresponse);
+		return null;
+		
+		
 	}
 	private List<Note> getResult(SearchResponse searchresponse) {
 		SearchHit[] searchhits = searchresponse.getHits().getHits();
